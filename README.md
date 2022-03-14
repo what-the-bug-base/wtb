@@ -11,7 +11,7 @@
  
 </p>
 Welcome to the [what-the-bug](https://what-the-bug.tk) codebase. Feel empowered to improve
-wtb's scalability and usage to assist the community out their gain free programming knownledge.
+wtb's scalability and usage to assist the community out their gain free programming knowledge.
 
 # what is What The Bug?
 wtb is open source base for learning.Essentially built to teach free python programming courses and build a community of developers.
