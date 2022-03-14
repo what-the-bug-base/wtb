@@ -1,7 +1,7 @@
 <div align="center">
   <br>
-  <h1>wtb</h1>
-  <strong>Tech bugs you can't chew</strong>
+  <h1>wtb 🤷</h1>
+  <strong>Tech bugs you can't chew🐞</strong>
 </div>
 <br>
 
@@ -22,7 +22,7 @@ This is the codebase for what-the-bug.tk (or just wtb) . wtb offers a learning e
 
 #### Local
 
-- [React](https://reactjs.org)
+- [React](https://reactjs.org), Redux
 - [Python](https://www.python.org/) 3.10: please refer to their
   [installation guide](https://python.org/docs/).
 - [Node](https://nodejs.org/) 17.3.0 or higher.
@@ -33,7 +33,7 @@ David Mugalla
 
 
 ## Getting Started
-We run on a [Python](https://www.python.org/) backend, and [React](https://reactjs.org/)-frontend.
+We run on a [Python](https://www.python.org/) backend, and [React](https://reactjs.org/)-frontend,Firebase for user authentication.
 
 
 ## Acknowledgments
