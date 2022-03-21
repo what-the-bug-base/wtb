@@ -1,0 +1,9 @@
+.content{
+    display: flex;
+    flex-direction:column;
+    flex:0.75;
+    height:100vh;
+    background-color:white
+    
+
+}
