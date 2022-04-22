@@ -10,7 +10,7 @@
   <img src="https://img.shields.io/static/v1?label=%22wtb%22&message=%22base%22&color=%22brightgreen%22" alt="GitHub commit activity">
  
 </p>
-Welcome to the [what-the-bug](https://what-the-bug.tk) codebase. Feel empowered to improve
+Welcome to the [what-the-bug](https://what-the-bug.tk) codebase.The Open-Source Education Platform Feel empowered to improve
 wtb's scalability and usage to assist the community out their gain free programming knowledge.
 
 # what is What The Bug?
