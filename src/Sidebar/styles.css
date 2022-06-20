@@ -6,6 +6,15 @@
     background: color #2f3135;
 
 }
+.sidebarslided{
+    display:flex;
+    flex-direction: column;
+    flex:0.06;
+    height:100vh;
+    transition: all 0.4s ease;
+    background: color #2f3135;
+
+}
 .sidebar__top{
     display:flex;
     justify-content: space-between;
@@ -16,6 +25,9 @@
     border-bottom: 3px solid #26282c;
 
 
+}
+.textslided{
+    display: none;
 }
 .sidebarcontent_hashcolor{
     color: white;
@@ -66,9 +78,16 @@
 .sidebar_contentList{
 
 flex: 1;
+     height: 0%;
+    transition: all 0.4s ease;
+   
+}
+.sidebar_contentListlowered{
+    flex: 1;
      height: 100%;
     margin-top: -10px;
-   
+    transition: all 0.4s ease;
+
 }
 .sidebar_info{
     display:flex;

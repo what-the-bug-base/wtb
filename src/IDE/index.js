@@ -5,7 +5,7 @@ import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
-//import Editor from "@monaco-editor/react";
+import Editor from "@monaco-editor/react";
 import Axios from 'axios';
 
 //import {Resizable} from "re-resizable"
@@ -146,7 +146,15 @@ export default function IDE({setIDE}){
           </div>
             
           </div>
-         
+          <Editor
+            options={options}
+            height="85%"
+            width="auto"
+            theme={userTheme}
+            language={userLang}
+            defaultLanguage="python"
+            onChange={(value) => { setUserCode(value) }}
+          />
      
         </div>
         <div className="right-container">

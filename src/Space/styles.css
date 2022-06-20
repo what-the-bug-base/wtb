@@ -1,0 +1,25 @@
+.space-cont-outer{
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    flex:0.75;
+    background-color:  rgb(208, 226, 235) ;
+    height: 100vh;
+    overflow: hidden;
+
+}
+.space-cont-inner{
+    margin-top: 10px;
+    display: flex;
+    overflow-y: scroll;
+    flex-direction: column;
+    height: 100%;
+    width: 100%
+
+}
+@media screen and (max-width:768px) {
+    
+    .space-cont-outer{
+        flex: 1;
+    }
+}

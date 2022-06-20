@@ -10,6 +10,8 @@ import {useDispatch,useSelector} from "react-redux"
 import {selectUser,login,logout} from "../features/userSlice"
 import Extra from "../Extra"
 import IDE from "../IDE"
+import Space from "../Space"
+import Topics from "../Topics"
 export default function Dashboard(){
     const dispatch = useDispatch()
     const user = useSelector(selectUser)
@@ -17,7 +19,8 @@ export default function Dashboard(){
     const [space,setSpace] = useState(false)
     const [extra,setExtra] = useState(false)
     const [topics,setTopics] = useState(false)
-
+    const [slide,setSlide] = useState(false)
+ 
 
  
 
@@ -42,10 +45,12 @@ export default function Dashboard(){
         <>
    {user?<div className="dash_container">
         
-        <Sidebar ide={ide} setIDE={setIDE} topics={topics} setTopics={setTopics} space={space} setSpace={setSpace} extra={extra} setExtra={setExtra}/>
-        {!ide&&!topics&&!extra&&!space&&<Content/>}
+        <Sidebar slide={slide} ide={ide} setIDE={setIDE} topics={topics} setTopics={setTopics} space={space} setSpace={setSpace} extra={extra} setExtra={setExtra}/>
+        {!ide&&!topics&&!extra&&!space&&<Content setSlide={setSlide}/>}
         {!ide&&!topics&&extra&&!space&&<Extra/>}
         {ide&&!topics&&!extra&&!space&&<IDE/>}
+        {!ide&&!topics&&!extra&&space&&<Space/>}
+        {!ide&&topics&&!extra&&!space&&<Topics/>}
 
 
     </div>:<Login/>}

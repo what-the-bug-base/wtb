@@ -24,9 +24,18 @@ height: 80%;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    font-size: 20px;
+    font-size: 15px;
    
 
+
+}
+.text2{
+    transition: all 0.4s ease;
+
+}
+.text2slided{
+    display: none;
+    transition: all 0.4s ease;
 }
 .sidebarcontent_hash>p,.sidebarcontent_hashcolor>p{
     margin-left: 10px;
@@ -34,14 +43,12 @@ height: 80%;
 
 .sidebarcontent_hashcolor{
     background-color: #40464b;
-    font-size: 22px;
     width: 80%;
     border-radius: 10px;
     display: flex;
     flex-direction: row;
     justify-content:center;
     align-items: center;
-    font-size: 20px;
     color: white;
     
 }

@@ -15,7 +15,7 @@ width: 100%;
 height: 100%;
 align-items: center;
 justify-content: center;
-background: #e0efe3;
+background-color:  rgb(208, 226, 235) ;
 }
 .ask-qstn{
     height: 50px;
@@ -40,7 +40,7 @@ background: #e0efe3;
     width: 20%;
     margin-right: 10px;
     border: none;
-    background-color: #2f3135;
+    background-color:  rgb(13, 92, 128) ;
     box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.2);
   
       color: white;
@@ -49,8 +49,13 @@ background: #e0efe3;
 }
 .join-space{
     border: none;
-    background-color: #2f3135;
+    padding: 5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    background-color:  rgb(13, 92, 128) ;
     color: white;
+    align-items: center;
     width: 20%;
     box-shadow: #2f3135 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px;
     border-radius: 5px;
