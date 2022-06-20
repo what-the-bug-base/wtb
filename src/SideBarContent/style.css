@@ -16,7 +16,8 @@
 
 }
 .sidebarcontent{
-    overflow-x: hidden;
+overflow-y: scroll ;
+height: 80%;
 }
 .sidebarcontent_hash{
     display: flex;

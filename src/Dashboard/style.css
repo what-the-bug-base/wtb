@@ -1,8 +1,9 @@
 .dash_container{
     background-color: white;
     display: flex;
-    margin: 0px;
+    margin: 0px auto;
     overflow: hidden;
+    position: relative;
 }
 
 

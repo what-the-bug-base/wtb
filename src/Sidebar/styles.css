@@ -64,6 +64,9 @@
     color:white;
 }
 .sidebar_contentList{
+
+flex: 1;
+     height: 100%;
     margin-top: -10px;
    
 }

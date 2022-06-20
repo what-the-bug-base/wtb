@@ -46,6 +46,7 @@ export default function SideBarContent({ide,setIDE,space,setSpace,extra,setExtra
             setExtra(false)
             }}><MessageOutlined/>
                 <p>Space</p></span></h4>
+              
              
         </div>
     )

@@ -23,6 +23,7 @@
     background-color: rgb(228, 228, 228);
     display: flex;
     font-weight: bold;
+
     color: white;
     border-radius: 5px;
    margin-top: 10px;
@@ -36,6 +37,7 @@
     width:90%;
     border-radius: 10px;
     overflow-x:hidden ;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
 
     height: 60%;
     background-color: white;
