@@ -1,5 +1,7 @@
 .sidebarcontent_hash:hover{
-    color:white;
+  
+    width: 80%;
+    border-radius: 10px;
     background-color: #40464b;
 }
 
@@ -13,8 +15,32 @@
 
 
 }
+.sidebarcontent{
+    overflow-x: hidden;
+}
 .sidebarcontent_hash{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
     font-size: 20px;
-    padding:8px;
+   
 
+}
+.sidebarcontent_hash>p,.sidebarcontent_hashcolor>p{
+    margin-left: 10px;
+}
+
+.sidebarcontent_hashcolor{
+    background-color: #40464b;
+    font-size: 22px;
+    width: 80%;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content:center;
+    align-items: center;
+    font-size: 20px;
+    color: white;
+    
 }

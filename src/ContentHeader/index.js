@@ -5,36 +5,50 @@ import {Paper} from "@material-ui/core"
 import {SettingsOutlined} from "@mui/icons-material";
 import {selectUser} from "../features/userSlice"
 import {useSelector} from "react-redux"
+import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
+import MoreVertIcon from '@mui/icons-material/MoreVert';
+import Box from '@mui/material/Box';
+import Tooltip from '@mui/material/Tooltip';
 export default function ContentHeader(){
-    const bar = {
-        height : '13vh',
-        width:"100%",
-        
-    }
+    
+
    
     const user= useSelector(selectUser)
-    console.log(user)
+
+    /*className="sidaber_profileinfo"{user.displayName}</h3>
+    <p>{user.uid.substring(0,5)}*/
+    
+
 
     return(
-        <Paper elevation={10} style={bar}>
+        <div className="bar-header" >
         <div className="content_header">
            
             <div className ="content_headerleft">
                 <h3>
-                  Test
+                
                 </h3>
             
             </div>
             <div className="content_headerright">
             <div className="sidebar_profile">
-                    <Avatar src={user.photo}/>
-                    <div className="sidaber_profileinfo">
-                        <h3>{user.displayName}</h3>
-                        <p>{user.uid.substring(0,5)}</p>
-                        
-                    </div>
+            <Box sx={{ flexGrow: 0 }}>
+            <Tooltip title="Profile Settings">
+                    <Avatar src={user.photo} />
+</Tooltip>
+</Box>
                     <div className="sidebar_profileicons">
-                        <SettingsOutlined className="sidebar_settings"/>
+                    
+            <Tooltip title="Notifications">
+                       <NotificationsNoneIcon className="dash-icon"/>
+                      </Tooltip>
+                     
+          <Tooltip title="More">
+                       <MoreVertIcon  className="dash-icon"/>
+                   
+                    </Tooltip>
+                    
+            
                     </div>
 
                 </div>
@@ -43,7 +57,7 @@ export default function ContentHeader(){
            
             
         </div>
-        </Paper>
+        </div>
         
     )
 }

@@ -2,7 +2,6 @@ import {React,useState,useEffect} from "react"
 import "./styles.css"
 import {Grid ,Paper,Avatar,TextField,Button, Typography} from "@material-ui/core"
 import { Link, useNavigate } from "react-router-dom";
-import Footer from "../Footer"
 import IconButton from "@material-ui/core/IconButton";
 import { auth, logInWithEmailAndPassword, signInWithGoogle } from "../firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
@@ -68,7 +67,7 @@ return(
         </Paper>
         
     </Grid>
-    <Footer/>
+  
 </div>
 
 )

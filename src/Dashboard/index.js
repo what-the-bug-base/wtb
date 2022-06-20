@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"
+import React, { useEffect,useState } from "react"
 import "./style.css"
 import Sidebar from "../Sidebar"
 import Content from "../Content"
@@ -8,10 +8,17 @@ import {useAuthState} from "react-firebase-hooks/auth"
 import {useNavigate} from "react-router-dom" 
 import {useDispatch,useSelector} from "react-redux" 
 import {selectUser,login,logout} from "../features/userSlice"
-
+import Extra from "../Extra"
+import IDE from "../IDE"
 export default function Dashboard(){
     const dispatch = useDispatch()
     const user = useSelector(selectUser)
+    const [ide,setIDE] = useState(false)
+    const [space,setSpace] = useState(false)
+    const [extra,setExtra] = useState(false)
+    const [topics,setTopics] = useState(false)
+
+
  
 
     useEffect(() => {
@@ -35,10 +42,10 @@ export default function Dashboard(){
         <>
    {user?<div className="dash_container">
         
-        <Sidebar/>
-        <Content/>
-        
-
+        <Sidebar ide={ide} setIDE={setIDE} topics={topics} setTopics={setTopics} space={space} setSpace={setSpace} extra={extra} setExtra={setExtra}/>
+        {!ide&&!topics&&!extra&&!space&&<Content/>}
+        {!ide&&!topics&&extra&&!space&&<Extra/>}
+        {ide&&!topics&&!extra&&!space&&<IDE/>}
 
 
     </div>:<Login/>}

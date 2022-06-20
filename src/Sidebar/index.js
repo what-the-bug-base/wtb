@@ -8,41 +8,31 @@ import { MessageOutlined } from "@mui/icons-material";
 import { ComputerOutlined } from "@mui/icons-material";
 import {auth} from "../firebase"
 
-export default function Sidebar(){
+export default function Sidebar({ide,setIDE,space,setSpace,extra,setExtra,topics,setTopics}){
+
+    
     return(
         <div className="sidebar">
             <div className="sidebar__top">
             
-                <h3>Talk Python</h3>
-                <ExpandMore/>
+                <h3>EinsBoard</h3>
+               
             </div>
             <div className="sidebar_content">
                 <div className="sidebar_contentHeader">
                     <div className="sidebar_header">
                         <ExpandMore/>
-                        <h4>Intro to Python</h4>
+                        <h4>Workspace</h4>
                     </div>
                     <Add className="sidebar_add"></Add>
                 </div>
                 <div className="sidebar_contentList">
-                <SideBarContent/>
+                <SideBarContent ide={ide} setIDE={setIDE} topics={topics} setTopics={setTopics} space={space} setSpace={setSpace} extra={extra} setExtra={setExtra}/>
                
             </div>
             </div>
             <div className="sidebar_info">
-            <ComputerOutlined className="sidebar_infoicon"/>
-                <div className="sidebar_contentinfo">
-                    <p>python 3.10</p>
-               
-                </div>
-                <div className="sidebar_infoicons">
-                    <InfoOutlined onClick={()=>{
-                        auth.signOut()
-                    }}/>
-                    <MessageOutlined/>
-
-
-                </div>
+        
                 
 
 

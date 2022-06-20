@@ -5,20 +5,19 @@ import {getFirestore,query,getDocs,collection,where,addDoc} from "firebase/fires
 
 //Register your app in firebase and add your config here
 const firebaseConfig = {
+  apiKey: "AIzaSyCr2bLeqHXIeyBeGJPliZ528R3e81qAXko",
+  
+  authDomain: "talk-python.firebaseapp.com",
 
-    apiKey: "",
-  
-    authDomain: "",
-  
-    projectId: "",
-  
-    storageBucket: "",
-  
-    messagingSenderId: "",
-  
-    appId: "",
-  
-    measurementId: ""
+  projectId: "talk-python",
+
+  storageBucket: "talk-python.appspot.com",
+
+  messagingSenderId: "418376693053",
+
+  appId: "1:418376693053:web:825b700f77c14878084154",
+
+  measurementId: "G-S8Y4DWY6M3"
   
   };
 

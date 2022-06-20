@@ -17,6 +17,10 @@
 
 
 }
+.sidebarcontent_hashcolor{
+    color: white;
+    font-size: 15px;
+}
 .sidebar_header{
     display:flex;
     align-items: center;
@@ -27,6 +31,7 @@
 
 }
 .sidebar_add{
+    color:gray;
     cursor: pointer;
 
 }
@@ -37,7 +42,7 @@
     align-items: center;
     padding:10px;
     background-color:#2f3135;
-    color:gray;
+    color:white;
 
 }.sidebar_infoicon{
     color: wheat;
@@ -60,6 +65,7 @@
 }
 .sidebar_contentList{
     margin-top: -10px;
+   
 }
 .sidebar_info{
     display:flex;
@@ -88,4 +94,9 @@
 .sidebar_profileinfoicons>.MuiSvgIcon-root{
     padding: 10px;
 
+}
+@media screen and (max-width:768px) {
+    .sidebar{
+        display: none;
+    }
 }
