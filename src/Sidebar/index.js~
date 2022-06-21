@@ -24,23 +24,16 @@ export default function Sidebar({setSlide,slide,ide,setIDE,space,setSpace,extra,
             </div>
             <div className="sidebar_content">
                 <div className="sidebar_contentHeader">
-                   
-                    {lower ?
-                     <div className="sidebar_header">
-                     <ExpandLess className="expand-icon" onClick={()=>{
+                    <div className="sidebar_header">
+                    {lower ? <ExpandLess onClick={()=>{
                             setActive(false)
-                        }}/> 
-                        <h4 className={`text`+slided} onClick={()=>{
-                            setActive(false)}}>Workspace</h4> </div>:
-                             <div className="sidebar_header">
-                        <ExpandMore className="expand-icon" onClick={()=>{
+                        }}/> :
+                        <ExpandMore onClick={()=>{
                             setActive(true)
-                        }}/>
-                         <h4 className={`text`+slided} onClick={()=>{
+                        }}/>}
+                        <h4 className={`text`+slided} onClick={()=>{
                             setActive(true)}}>Workspace</h4>
-                             </div>}
-                        
-                   
+                    </div>
                     <Tooltip title="Add Markdown">
                     <Add className="sidebar_add"></Add>
                     </Tooltip>

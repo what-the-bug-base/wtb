@@ -7,9 +7,6 @@
     background: color #2f3135;
 
 }
-.expand-icon{
-    cursor:pointer;
-}
 .sidebarslided{
     display:flex;
     flex-direction: column;
@@ -30,14 +27,7 @@
 
 
 }
-.text{
-    cursor:pointer;
-     transition: all 0.4s ease-out;
-    
-}
-
 .textslided{
- transition: all 0.4s ease-in;
     display: none;
 }
 .sidebarcontent_hashcolor{
@@ -135,12 +125,9 @@ flex: 1;
 }
 .nameslided{
     display: none;
-    transition: all 4s ease;
 }
 .name{
-
-letter-spacing:3px;
-    transition: all 4s ease;
+    transition: all 4s ease-in;
 }
 .menu-icon{
     display: flex;

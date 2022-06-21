@@ -1,10 +1,11 @@
 .topics-cont{
     display: flex;
     flex-direction: column;
-    flex:1;
+    margin: 0;
+    flex:0.75;
     background-color:  rgb(208, 226, 235) ;
     height: 100vh;
-    
+    overflow: hidden;
 }
 .topics-cont-inner{
     margin: auto;

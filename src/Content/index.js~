@@ -29,9 +29,9 @@ export default function Content({setSlide}){
               <GaugeChart
                 id="uv-gauge-chart"
                 nrOfLevels={2}
-                arcsLength={[6 / 20, (20 - 6) / 20]}
+                arcsLength={[12 / 20, (20 - 12) / 20]}
                 colors={['rgb(13, 92, 128)', "#efefef"]}
-                percent={6 / 20}
+                percent={12 / 20}
                 arcPadding={0.02}
                 cornerRadius={0}
                 needleColor="transparent"
@@ -39,20 +39,20 @@ export default function Content({setSlide}){
                 hideText
               />
           
-            <p>6 points</p>
+            <p>12 points</p>
                 </div>
                 <div className="dash-score-factors">
                     <p className="dash-score-title">Score factors</p>
                     <div className="dash-score-box1">
                     <Tooltip title="Answer questions from your moderator and earn points">
                     <div className="dash-quiz-points">
-                        <h4>2</h4>
+                        <h4>5</h4>
                         <p>quiz point(s)</p>
                     </div>
                     </Tooltip>
                     <Tooltip title="Engage with course material and earn points">
                     <div className="dash-engage-points">
-                    <h4>4</h4>
+                    <h4>7</h4>
                    <p>engagement</p>
                     </div>
                     </Tooltip>
@@ -76,5 +76,3 @@ export default function Content({setSlide}){
         </div>
     )
 }
-
-

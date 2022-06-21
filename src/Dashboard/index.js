@@ -45,7 +45,7 @@ export default function Dashboard(){
         <>
    {user?<div className="dash_container">
         
-        <Sidebar slide={slide} ide={ide} setIDE={setIDE} topics={topics} setTopics={setTopics} space={space} setSpace={setSpace} extra={extra} setExtra={setExtra}/>
+        <Sidebar slide={slide} setSlide={setSlide} ide={ide} setIDE={setIDE} topics={topics} setTopics={setTopics} space={space} setSpace={setSpace} extra={extra} setExtra={setExtra}/>
         {!ide&&!topics&&!extra&&!space&&<Content setSlide={setSlide}/>}
         {!ide&&!topics&&extra&&!space&&<Extra/>}
         {ide&&!topics&&!extra&&!space&&<IDE/>}

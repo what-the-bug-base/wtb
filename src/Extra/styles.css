@@ -1,7 +1,7 @@
 .extra-cont{
     display:flex;
     flex-direction: column;
-    flex:0.75;
+    flex:1;
     margin: 0px;
     overflow-y:hidden ;
     height:100vh;

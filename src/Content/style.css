@@ -1,7 +1,7 @@
 .content{
     display: flex;
     flex-direction:column;
-    flex:0.75;
+    flex:1;
     height:100vh;
     background-color:white
     

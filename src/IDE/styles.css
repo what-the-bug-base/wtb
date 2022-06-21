@@ -97,9 +97,9 @@
     
     position: relative;
     flex: 5%;
-    justify-content: center;
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    text-align: center;
     height: 100%;
     background-color: #272c3b;
   
@@ -231,7 +231,7 @@
   .IDE{
     display: flex;
     flex-direction:column;
-    flex:0.75;
+    flex:1;
     height:100vh;
     margin: 0px;
     overflow: hidden;
