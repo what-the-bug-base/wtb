@@ -7,10 +7,12 @@ import { auth, logInWithEmailAndPassword, signInWithGoogle } from "../firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import {useSelector,useDispatch} from "react-redux"
 import {selectUser,login,logout} from "../features/userSlice"
+import Menuicon from "../Menuicon"
 
 export default function Login(){
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [loader,setLoader] = useState(false);
   
     const dispatch = useDispatch();
 
@@ -20,54 +22,83 @@ export default function Login(){
         padding:20,
         height:'70vh',
         width:350,
-        margin:'auto',
+        margin:'left',
         marginTop:50
       
     }
     const ggStyle ={
-        marginBottom:20
+        marginTop:17
         
     }
     const btnStyle = {
-        marginTop:20
+        marginTop:20,
+        // marginBottom:20
     }
 
 return(
-    <div>
+    <div className="login-cont-cont">
+          
+
+   
+                 <div className="talk-nav">
+                <li className="temp-list">
+                <ul><img className="talk-icon"src="/icon-dev.png"/></ul> 
+                 
+                 
+                 
+               
+                </li>
+         </div>
+                     {loader==true?<div className="login-image-cont">
+    <img src="/dev-icon.gif"/></div>:
+    <>
+    <div className="login-container">
+    
+           
     <Grid className="login-cont">
+ 
        
-        <Paper elevation={10} style={paperStyle}>
-        <Grid align="center">
+    
+        <Grid className="main-icons" align="center">
             <img className="main-icon"src="/icon-dev.png"/>  
-            <h2>Talk Python</h2>
+            <h2>EinsBoard</h2>
        
         </Grid>
-        <TextField label="Email" onChange={(e) => setEmail(e.target.value)} value={email} placeholder="Enter email" fullWidth required/>
-        <TextField label="Password" onChange={(e) => setPassword(e.target.value)} value={password} placeholder="Enter Password" type="password" fullWidth required/>
+  
+      
+  <div className="login-input-bar">
+        <input  label="Email" onChange={(e) => setEmail(e.target.value)} value={email} placeholder="admissionNo@school/TeachersNo@School" fullWidth required/>
+        <input  label="Password" onChange={(e) => setPassword(e.target.value)} value={password} placeholder="Enter Password" type="password" fullWidth required/>
+     </div>
+        <Button style={btnStyle}  onClick={() => {
+              setLoader(!loader)
+              setTimeout(()=>{
+                  setLoader(loader=>!loader)},1500);
+           logInWithEmailAndPassword(email, password)
+             setLoader(!loader)
+           
+        }} type="sumbit" variant="contained" color="primary" fullWidth>Sign in</Button>
+      
 
-        <Button style={btnStyle}  onClick={() => logInWithEmailAndPassword(email, password)} type="sumbit" variant="contained" color="primary" fullWidth>Sign in</Button>
-        <Typography component={'p'} >
-            <p>Or</p>
+
+
+        <Typography style={{marginTop:20,fontSize:12}} >
+            <Link style={{color:"rgb(53, 53, 155)"}}  to="">Forgot password ?</Link>
 
         </Typography>
-        <div className="customBtn" onClick={signInWithGoogle}class="customGPlusSignIn">
-      <span className="icon"></span>
-      <span className="buttonText">Google</span>
-    </div>
-
-
-
-        <Typography >
-            <Link to="">Forgot password ?</Link>
-
+        <Typography style={{fontSize:12}}> Don't have an acount ?
+            <Link style={{color:"rgb(53, 53, 155)"}}  to="/sign-up">Sign up</Link>
         </Typography>
-        <Typography> Don't have an acount ?
-            <Link to="">Sign up</Link>
-        </Typography>
-        </Paper>
+
         
     </Grid>
+
+    <img alt="login-img" className="bg-image"src="/assets/rename.jpg" />
   
+</div>
+      </>
+}
+
 </div>
 
 )

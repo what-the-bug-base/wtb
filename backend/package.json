@@ -1,0 +1,38 @@
+{
+  "name": "einsboard-backend",
+  "version": "1.0.1",
+  "description": "server",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "david mugalla",
+  "license": "MIT",
+  "engines": {
+    "node": "17.x"
+  },
+  "dependancies": {
+    "express": "^4.18.0",
+    "cors": "^2.8.5",
+    "mongoose": "^6.3.1",
+    "dotenv": "^16.0.0",
+    "socket.io": "^4.5.0",
+    "socket.io-client": "^4.5.0"
+  },
+  "keywords": [
+    "einsboard",
+    "backend"
+  ],
+  "dependencies": {
+    "@hapi/joi": "^17.1.1",
+    "bcrypt": "^5.0.1",
+    "cors": "^2.8.5",
+    "joi": "^17.6.0",
+    "joi-password-complexity": "^5.1.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.4.0",
+    "nodemailer": "^6.7.5",
+    "nodemon": "^2.0.18"
+  }
+}

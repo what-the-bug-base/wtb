@@ -9,7 +9,7 @@ import { ComputerOutlined } from "@mui/icons-material";
 import {auth} from "../firebase"
 import { Tooltip } from "@mui/material";
 
-export default function Sidebar({setSlide,slide,ide,setIDE,space,setSpace,extra,setExtra,topics,setTopics}){
+export default function Sidebar({setSlide,classRoom,setClass,slide,ide,setIDE,space,setSpace,extra,setExtra,topics,setTopics}){
     const [active,setActive] = useState(false)
     const lower = active ? "lowered":""
     const slided = slide ?"slided":"" 
@@ -19,7 +19,8 @@ export default function Sidebar({setSlide,slide,ide,setIDE,space,setSpace,extra,
             
                 <h3 className={`name`+slided}>EinsBoard</h3>
                 <div className="menu-icon" >
-                {slide&&<MenuOutlined fontSize="small" onClick={()=>{setSlide(false)}}/>}
+                {slide&&
+                <MenuOutlined fontSize="small" onClick={()=>{setSlide(false)}}/>}
             </div>
             </div>
             <div className="sidebar_content">
@@ -46,7 +47,7 @@ export default function Sidebar({setSlide,slide,ide,setIDE,space,setSpace,extra,
                     </Tooltip>
                 </div>
                 <div className={`sidebar_contentList`+lower}>
-                <SideBarContent slide={slide} active={active} ide={ide} setIDE={setIDE} topics={topics} setTopics={setTopics} space={space} setSpace={setSpace} extra={extra} setExtra={setExtra}/>
+                <SideBarContent slide={slide} classRoom={classRoom} setClass={setClass} active={active} ide={ide} setIDE={setIDE} topics={topics} setTopics={setTopics} space={space} setSpace={setSpace} extra={extra} setExtra={setExtra}/>
                
             </div>
             </div>

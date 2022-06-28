@@ -1,23 +1,24 @@
 import { initializeApp } from "firebase/app";
 import {GoogleAuthProvider,getAuth,signInWithPopup,signInWithEmailAndPassword,createUserWithEmailAndPassword,sendPasswordResetEmail,signOut} from "firebase/auth"
 import {getFirestore,query,getDocs,collection,where,addDoc} from "firebase/firestore"
+import toast from "react-hot-toast"
+import axios from "axios";
 
-
-//Register your app in firebase and add your config here
 const firebaseConfig = {
-  apiKey: "AIzaSyCr2bLeqHXIeyBeGJPliZ528R3e81qAXko",
+
+    apiKey: "AIzaSyCr2bLeqHXIeyBeGJPliZ528R3e81qAXko",
   
-  authDomain: "talk-python.firebaseapp.com",
-
-  projectId: "talk-python",
-
-  storageBucket: "talk-python.appspot.com",
-
-  messagingSenderId: "418376693053",
-
-  appId: "1:418376693053:web:825b700f77c14878084154",
-
-  measurementId: "G-S8Y4DWY6M3"
+    authDomain: "talk-python.firebaseapp.com",
+  
+    projectId: "talk-python",
+  
+    storageBucket: "talk-python.appspot.com",
+  
+    messagingSenderId: "418376693053",
+  
+    appId: "1:418376693053:web:825b700f77c14878084154",
+  
+    measurementId: "G-S8Y4DWY6M3"
   
   };
 
@@ -29,34 +30,107 @@ const provider = new GoogleAuthProvider();
 
   const signInWithGoogle = async () => {
     try {
-      const res = await signInWithPopup(auth, provider);
-      const user = res.user;
+      await signInWithPopup(auth, provider).then(async(res)=>{
+          const user = res.user;
       const q = query(collection(db, "users"), where("uid", "==", user.uid));
       const docs = await getDocs(q);
-      if (docs.docs.length === 0) {
+       if (docs.docs.length === 0) {
         await addDoc(collection(db, "users"), {
           uid: user.uid,
           name: user.displayName,
           authProvider: "google",
           email: user.email,
         });
+          toast.success(`Welcome ${user.displayName}`)
+            if(user){
+        window.location="/portal/new"
       }
+      }
+      
+
+      }).catch((err)=>{
+        console.log(err)
+        toast.error(`An Error Occured`)
+        
+      });
+    
+     
+    
+    
+   
     } catch (err) {
       console.error(err);
-      alert(err.message);
+       toast.error(`An Error Occured`)
     }
   };
   const logInWithEmailAndPassword = async (email, password) => {
-    try {
-      await signInWithEmailAndPassword(auth, email, password);
-
-    } catch (err) {
-      console.error(err);
-      alert(err.message);
+    const data = {email:email,password:password}
+    try{
+     const url = "https://localhost:5000/api/v1/auth/login"
+      const {data:res} = await axios.post(url,data);
+      localStorage.setItem("token",res.data);
+       toast.success("Login Successful")
+        window.location="/portal/new"
+      
+      
     }
+    catch(error){
+
+     if(error.response && error.response.status>=400&& error.response.status<=500)
+     {
+     toast.error(error.response.data.message)
+     }else{
+      toast.error("Internal Server Error")
+     }
+    }
+   /** try {
+     const res = await signInWithEmailAndPassword(auth, email, password);
+     const user = res.user
+    //remember to change this on production
+      toast.success("Login Successful")
+            if(user){
+        window.location="/portal/new"
+      }
+    } catch (error) {
+          var errorCode = error.code;
+      var errorMessage = error.message;
+
+        if (errorCode === 'auth/user-not-found') {
+          toast.error("No user is associated with details")
+        } else if (errorCode === 'auth/wrong-password') {
+           toast.error("Wrong user-email or password")
+        }else if (errorCode === 'auth/invalid-email') {
+           toast.error("Invalid Email")
+        }
+
+
+   
+      
+    }**/
+    
   };
+ 
   const registerWithEmailAndPassword = async (name, email, password) => {
-    try {
+    const data = {name:name,email:email,password:password}
+    try{
+     const url = "https://localhost:5000/api/v1/auth/register";
+      const {data:res} = await axios.post(url,data);
+    
+       toast.success("Registration Successful")
+        window.location="/"
+      
+      
+    }
+    catch(error){
+
+     if(error.response && error.response.status>=400&& error.response.status<=500)
+     {
+     toast.error(error.response.data.message)
+     }else{
+      toast.error("Internal Server Error")
+     }
+    }
+    /**try {
       const res = await createUserWithEmailAndPassword(auth, email, password);
       const user = res.user;
       await addDoc(collection(db, "users"), {
@@ -65,10 +139,20 @@ const provider = new GoogleAuthProvider();
         authProvider: "local",
         email,
       });
+      toast.success(`Account Successfuly Created`)
+  
     } catch (err) {
-      console.error(err);
-      alert(err.message);
-    }
+      const  errCode = err.code
+      if(errCode=="auth/email-already-in-use"){
+        
+        toast.error("Email already in use")
+      }
+  else{
+      toast.error("An Error Occcured")
+  }
+     
+    }*/
+    
   };
   const sendPasswordReset = async (email) => {
     try {
@@ -84,6 +168,5 @@ const provider = new GoogleAuthProvider();
   };
 
 
-export { auth,provider,signInWithGoogle,logInWithEmailAndPassword,registerWithEmailAndPassword,sendPasswordReset,logout
+export {db, auth,provider,signInWithGoogle,logInWithEmailAndPassword,registerWithEmailAndPassword,sendPasswordReset,logout
 }
-export default db;

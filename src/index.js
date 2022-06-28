@@ -8,16 +8,32 @@ import Signup from "./Signup"
 import Login from "./Login"
 import { store } from './app/store';
 import { Provider } from 'react-redux';
+import Page404 from "./Page404"
+import NewUser from "./NewUser"
+import Plan from "./Plan"
+import {Toaster} from "react-hot-toast"
 
+//  <Route path="*" element={<Page404/>}/>
 
 
 
 ReactDOM.render(
   <Provider store={store}>
   <BrowserRouter>
+  <Toaster position="top-right"
+  toastOption={{
+    success:{
+      theme:{
+        primary:'blue'
+      },
+    },
+  }}></Toaster>
   <Routes>
-    <Route path='/' element={<Dashboard />}/>
+    <Route path="/" element={<Login/>}/>
+    <Route path='/portal/ws/:id' element={<Dashboard />}/>
     <Route path='/login' element={<Login />}/>
+    <Route path="/order" element={<Plan/>}/>
+    <Route path="/portal/new" element={<NewUser/>}/>
     <Route path='/sign-up' element={<Signup/>} />
       </Routes>
   </BrowserRouter>

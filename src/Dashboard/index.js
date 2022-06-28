@@ -19,9 +19,10 @@ export default function Dashboard(){
     const [space,setSpace] = useState(false)
     const [extra,setExtra] = useState(false)
     const [topics,setTopics] = useState(false)
-    const [slide,setSlide] = useState(false)
+    const [slide,setSlide] = useState(true)
+    const [classRoom,setClass] = useState(false)
  
-
+    const user1 = localStorage.getItem("token") 
  
 
     useEffect(() => {
@@ -43,14 +44,15 @@ export default function Dashboard(){
 
     return(
         <>
-   {user?<div className="dash_container">
+   {user||user1?<div className="dash_container">
         
-        <Sidebar slide={slide} setSlide={setSlide} ide={ide} setIDE={setIDE} topics={topics} setTopics={setTopics} space={space} setSpace={setSpace} extra={extra} setExtra={setExtra}/>
-        {!ide&&!topics&&!extra&&!space&&<Content setSlide={setSlide}/>}
-        {!ide&&!topics&&extra&&!space&&<Extra/>}
-        {ide&&!topics&&!extra&&!space&&<IDE/>}
-        {!ide&&!topics&&!extra&&space&&<Space/>}
-        {!ide&&topics&&!extra&&!space&&<Topics/>}
+        <Sidebar slide={slide} setSlide={setSlide} classRoom={classRoom} setClass={setClass} ide={ide} setIDE={setIDE} topics={topics} setTopics={setTopics} space={space} setSpace={setSpace} extra={extra} setExtra={setExtra}/>
+        
+        {!ide&&!topics&&!extra&&!space&&!classRoom&&<Content setSlide={setSlide}/>}
+        {!ide&&!topics&&extra&&!space&&!classRoom&&<Extra/>}
+        {ide&&!topics&&!extra&&!space&&!classRoom&&<IDE/>}
+        {!ide&&!topics&&!extra&&space&&!classRoom&&<Space/>}
+        {!ide&&topics&&!extra&&!space&&!classRoom&&<Topics/>}
 
 
     </div>:<Login/>}

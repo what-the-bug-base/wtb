@@ -47,22 +47,69 @@ background-color:  rgb(208, 226, 235) ;
     border-radius: 5px;
 
 }
-.join-space{
-    border: none;
-    padding: 5px;
+.file-cont-sub{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    color: black;
+    border-radius: 50%;
+    background-color:  rgb(208, 226, 235) ;
+    
+    justify-content: center;
+}
+.upcoming-sub-inner{
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
-    background-color:  rgb(13, 92, 128) ;
-    color: white;
-    align-items: center;
-    width: 20%;
-    box-shadow: #2f3135 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px;
-    border-radius: 5px;
-    height: 40px;
+    height: 70%;
+    width: 90%;
+    margin: auto;
+    justify-content: space-between;
+}
+.date-cont-time{
+    display: flex;
+    line-height: 20px;
     padding: 5px;
+    margin-bottom: 10px;
+    flex-direction: column;
+}
+.reminder-btn{
+    box-shadow: rgb(13, 92, 128) 0px 0px 0px 1px; border: none;
+    width: 100px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    height: 30px;
+    background-color: white;
+
+
+}
+.date-cont-time>p{
+    color: rgb(165, 94, 94);
+}
+.upcoming-sub{
+   
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+ 
+ 
+    color: rgb(83, 83, 83);
+    align-items:flex-start;
+    justify-content: center;
+    width: 70%;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+
+      border-radius: 5px;
+    height: 80%;
+    padding: 5px;
+    font-size: 13px;
     cursor: pointer;
 
+}
+.title-sub{
+    margin-left: 5px;
 }
 .dash-points{
     display: flex;
@@ -125,7 +172,7 @@ justify-content: center;
 }
 .bottom-btns{
         display: flex;
-        height: 300px;
+        height: 200px;
         width: 100%;
     flex-direction: row;
     margin: auto;
@@ -143,6 +190,9 @@ justify-content: center;
         height: 100px;
         margin-top: 10px;
 
+    }
+    .upcoming-sub{
+        width: 95%;
     }
     .join-space{
         width: 200px;

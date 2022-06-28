@@ -15,7 +15,30 @@ import { ExpandMore,AccountCircleOutlined,SettingsOutlined,DeleteOutline, FileOp
 
 // images
 
+/**  <div className="right-container">
+        
+          {loading ? (
+            <div className="spinner-box">
+              <img src="/Spinner.gif"  />
+            </div>
+          ) : (
+            <div className="output-box">
+              <div className="output-nav">
+                <div className="output-nav-left">
+                <p>PROBLEMS</p>
+                <p>OUTPUT</p>
+                <p>TERMINAL</p>
+                </div>
+                <div className="output-nav-right">
+               <DeleteOutline fontSize='small' onClick={() => { clearOutput() }}/>
+                </div>
 
+                </div>
+              <pre>{userOutput}</pre>
+            
+            </div>
+          )}
+        </div> */
 export default function IDE({setIDE}){
     const [userCode, setUserCode] = useState(``);
  
@@ -157,30 +180,7 @@ export default function IDE({setIDE}){
           />
      
         </div>
-        <div className="right-container">
-        
-          {loading ? (
-            <div className="spinner-box">
-              <img src="/Spinner.gif"  />
-            </div>
-          ) : (
-            <div className="output-box">
-              <div className="output-nav">
-                <div className="output-nav-left">
-                <p>PROBLEMS</p>
-                <p>OUTPUT</p>
-                <p>TERMINAL</p>
-                </div>
-                <div className="output-nav-right">
-               <DeleteOutline fontSize='small' onClick={() => { clearOutput() }}/>
-                </div>
-
-                </div>
-              <pre>{userOutput}</pre>
-            
-            </div>
-          )}
-        </div>
+      
         </div>
       </div>
     

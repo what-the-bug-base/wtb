@@ -5,13 +5,13 @@ import ContentHeader from "../ContentHeader"
 
 export default function Space(){
 
- const spaces =[{id:0,img:"pic5.webp",name:"space1",timestamp:"12:44"},
- {id:0,img:"pic5.webp",name:"space1",timestamp:"12:44"},
- {id:0,img:"pic5.webp",name:"space1",timestamp:"12:44"},
- {id:0,img:"pic5.webp",name:"space1",timestamp:"12:44"},
- {id:0,img:"pic5.webp",name:"space1",timestamp:"12:44"},
- {id:0,img:"pic5.webp",name:"space1",timestamp:"12:44"},
- {id:0,img:"pic5.webp",name:"space1",timestamp:"12:44"}]
+ const spaces =[{id:0,img:"pic.jpg",name:"space1",timestamp:"12:44"},
+ {id:0,img:"pic.jpg",name:"space1",timestamp:"12:44"},
+ {id:0,img:"pic.jpg",name:"space1",timestamp:"12:44"},
+ {id:0,img:"pic.jpg",name:"space1",timestamp:"12:44"},
+ {id:0,img:"pic.jpg",name:"space1",timestamp:"12:44"},
+ {id:0,img:"pic.jpg",name:"space1",timestamp:"12:44"},
+ {id:0,img:"pic.jpg",name:"space1",timestamp:"12:44"}]
 
  const data = spaces.map((item)=>{
     return(<Spaceitem key={item.id} item={item}/>)
