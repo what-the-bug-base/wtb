@@ -64,10 +64,23 @@ const provider = new GoogleAuthProvider();
     }
   };
   const logInWithEmailAndPassword = async (email, password) => {
-    const data = {email:email,password:password}
+    const options = {
+      method:'post',
+      headers:{
+          'Content-type':"application/json"
+      },
+      data:{
+
+             "password" :password,
+             "email":email
+           
+          
+      }
+  }
+   
     try{
-     const url = "https://localhost:5000/api/v1/auth/login"
-      const {data:res} = await axios.post(url,data);
+     const url = "https://localhost:5000/users/api/v1/auth/login"
+      const {data:res} = await axios.post(url,options);
       localStorage.setItem("token",res.data);
        toast.success("Login Successful")
         window.location="/portal/new"
@@ -110,19 +123,35 @@ const provider = new GoogleAuthProvider();
     
   };
  
-  const registerWithEmailAndPassword = async (name, email, password) => {
-    const data = {name:name,email:email,password:password}
+  const registerWithEmailAndPassword = async (firstname,secondname,regNo,email,password) => {
+    const data = {firstname:firstname,secondname:secondname,regNo:regNo,email:email,password:password}
+   
+    const options = {
+      method:'post',
+      headers:{
+          'Content-type':"application/json"
+      },
+      data:{
+        "firstname" :firstname,
+            "lastname" : secondname,
+             "password" :password,
+             "email":email,
+            "regno": regNo,
+           
+          
+      }
+  }
     try{
-     const url = "https://localhost:5000/api/v1/auth/register";
-      const {data:res} = await axios.post(url,data);
-    
-       toast.success("Registration Successful")
-        window.location="/"
+     const url = "http://localhost:5000/users/api/v1/auth/register";
+     const {data:res}  = await axios.post(url,options)
+     toast.success("Registration Successful")
+      window.location="/"
+      
       
       
     }
     catch(error){
-
+     
      if(error.response && error.response.status>=400&& error.response.status<=500)
      {
      toast.error(error.response.data.message)

@@ -67,7 +67,7 @@ return(
   
       
   <div className="login-input-bar">
-        <input  label="Email" onChange={(e) => setEmail(e.target.value)} value={email} placeholder="admissionNo@school/TeachersNo@School" fullWidth required/>
+        <input  label="RegNo" onChange={(e) => setEmail(e.target.value)} value={email} placeholder="admissionNo@school/TeachersNo@School" fullWidth required/>
         <input  label="Password" onChange={(e) => setPassword(e.target.value)} value={password} placeholder="Enter Password" type="password" fullWidth required/>
      </div>
         <Button style={btnStyle}  onClick={() => {
@@ -93,7 +93,7 @@ return(
         
     </Grid>
 
-    <img alt="login-img" className="bg-image"src="/assets/rename.jpg" />
+    <img alt="login-img" className="bg-image"src="/assets/sign-up.jpg" />
   
 </div>
       </>

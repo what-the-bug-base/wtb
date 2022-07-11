@@ -10,9 +10,11 @@ import Menuicon from "../Menuicon"
 export default function Signup(){
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [name, setUsername] = useState("");
+    const [firstname, setFirstname] = useState("");
+    const [secondname, setSecondname] = useState("");
     const [loader,setLoader] = useState(false);
-  
+    const [regNo, setRegNo] = useState("");
+   
 
 
     const login ={
@@ -64,10 +66,10 @@ return(
    
     <div className="login-input-bar">
         <div className="login-first-second-name">
-    <input label="Username" onChange={(e) => setUsername(e.target.value)} value={name} placeholder="Enter First Name" fullWidth required/>
-    <input label="Username" onChange={(e) => setUsername(e.target.value)} value={name} placeholder="Enter Last Name" fullWidth required/>
+    <input label="firstname" onChange={(e) => setFirstname(e.target.value)} value={firstname} placeholder="Enter First Name" fullWidth required/>
+    <input label="secondname" onChange={(e) => setSecondname(e.target.value)} value={secondname} placeholder="Enter Last Name" fullWidth required/>
     </div>
-    <input label="Admissionschool" onChange={(e) => setUsername(e.target.value)} value={name} placeholder="admissionNo@school" fullWidth required/>
+    <input label="RegNo" onChange={(e) => setRegNo(e.target.value)} value={regNo} placeholder="admissionNo@school" fullWidth required/>
        
         <input  label="Email" onChange={(e) => setEmail(e.target.value)} value={email} placeholder="Enter email" fullWidth required/>
         <input  label="Password" onChange={(e) => setPassword(e.target.value)} value={password} placeholder="Enter Password" type="password" fullWidth required/>
@@ -77,7 +79,8 @@ return(
               setLoader(!loader)
               setTimeout(()=>{
                   setLoader(loader=>!loader)},2600);
-                  registerWithEmailAndPassword(name,email, password) 
+                  
+                  registerWithEmailAndPassword(firstname,secondname,regNo,email,password) 
                   setLoader(!loader)
            
         }} type="sumbit" variant="contained" color="primary" fullWidth>Sign up</Button>
@@ -88,8 +91,8 @@ return(
        
         
     </Grid>
-    <img alt="login-img" className="bg-image"src="/assets/write.jpg" />
-   
+    <img alt="login-img" className="bg-image"src="/assets/rename.jpg" />
+  
 </div>
  </>
 }

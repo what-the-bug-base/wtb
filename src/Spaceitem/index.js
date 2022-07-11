@@ -11,7 +11,7 @@ return(
         <img src={"/"+props.item.img}></img>
         <p>{props.item.name}</p>
         </div>
-        <p>{props.item.timestamp}</p>
+        <p className="space-last-msg-timestamp">{props.item.timestamp}</p>
         
 
         </div>

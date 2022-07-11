@@ -12,6 +12,7 @@ import Extra from "../Extra"
 import IDE from "../IDE"
 import Space from "../Space"
 import Topics from "../Topics"
+import Analytics from "../Analytics"
 export default function Dashboard(){
     const dispatch = useDispatch()
     const user = useSelector(selectUser)
@@ -21,7 +22,7 @@ export default function Dashboard(){
     const [topics,setTopics] = useState(false)
     const [slide,setSlide] = useState(true)
     const [classRoom,setClass] = useState(false)
- 
+    const [analytics,setAnalytics] = useState(false)
     const user1 = localStorage.getItem("token") 
  
 
@@ -46,13 +47,15 @@ export default function Dashboard(){
         <>
    {user||user1?<div className="dash_container">
         
-        <Sidebar slide={slide} setSlide={setSlide} classRoom={classRoom} setClass={setClass} ide={ide} setIDE={setIDE} topics={topics} setTopics={setTopics} space={space} setSpace={setSpace} extra={extra} setExtra={setExtra}/>
+        <Sidebar slide={slide} analytics={analytics} setAnalytics={setAnalytics} setSlide={setSlide} classRoom={classRoom} setClass={setClass} ide={ide} setIDE={setIDE} topics={topics} setTopics={setTopics} space={space} setSpace={setSpace} extra={extra} setExtra={setExtra}/>
         
-        {!ide&&!topics&&!extra&&!space&&!classRoom&&<Content setSlide={setSlide}/>}
-        {!ide&&!topics&&extra&&!space&&!classRoom&&<Extra/>}
-        {ide&&!topics&&!extra&&!space&&!classRoom&&<IDE/>}
-        {!ide&&!topics&&!extra&&space&&!classRoom&&<Space/>}
-        {!ide&&topics&&!extra&&!space&&!classRoom&&<Topics/>}
+        {!analytics&&!ide&&!topics&&!extra&&!space&&!classRoom&&<Content setSlide={setSlide}/>}
+        {!analytics&&!ide&&!topics&&extra&&!space&&!classRoom&&<Extra/>}
+        {!analytics&&ide&&!topics&&!extra&&!space&&!classRoom&&<IDE/>}
+        {!analytics&&!ide&&!topics&&!extra&&space&&!classRoom&&<Space/>}
+        {!analytics&&!ide&&topics&&!extra&&!space&&!classRoom&&<Topics/>}
+        {analytics&&!ide&&!topics&&!extra&&!space&&!classRoom&&<Analytics/>}
+        
 
 
     </div>:<Login/>}

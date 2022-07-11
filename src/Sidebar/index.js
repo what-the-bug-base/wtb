@@ -1,6 +1,6 @@
 import React,{useState} from "react";
 import "./styles.css"
-import { ExpandMore,ExpandLess, Expand, CloseOutlined, MenuOutlined } from "@mui/icons-material";
+import { ExpandMore,ExpandLess, Expand, CloseOutlined, MenuOutlined, Logout } from "@mui/icons-material";
 import { Add } from "@mui/icons-material";
 import SideBarContent from "../SideBarContent"
 import { InfoOutlined, } from "@mui/icons-material";
@@ -9,7 +9,7 @@ import { ComputerOutlined } from "@mui/icons-material";
 import {auth} from "../firebase"
 import { Tooltip } from "@mui/material";
 
-export default function Sidebar({setSlide,classRoom,setClass,slide,ide,setIDE,space,setSpace,extra,setExtra,topics,setTopics}){
+export default function Sidebar({analytics,setAnalytics,setSlide,classRoom,setClass,slide,ide,setIDE,space,setSpace,extra,setExtra,topics,setTopics}){
     const [active,setActive] = useState(false)
     const lower = active ? "lowered":""
     const slided = slide ?"slided":"" 
@@ -47,12 +47,12 @@ export default function Sidebar({setSlide,classRoom,setClass,slide,ide,setIDE,sp
                     </Tooltip>
                 </div>
                 <div className={`sidebar_contentList`+lower}>
-                <SideBarContent slide={slide} classRoom={classRoom} setClass={setClass} active={active} ide={ide} setIDE={setIDE} topics={topics} setTopics={setTopics} space={space} setSpace={setSpace} extra={extra} setExtra={setExtra}/>
+                <SideBarContent analytics={analytics} setAnalytics={setAnalytics} slide={slide} classRoom={classRoom} setClass={setClass} active={active} ide={ide} setIDE={setIDE} topics={topics} setTopics={setTopics} space={space} setSpace={setSpace} extra={extra} setExtra={setExtra}/>
                
             </div>
             </div>
             <div className="sidebar_info">
-        
+        <Logout/>
                 
 
 

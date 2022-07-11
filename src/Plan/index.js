@@ -69,7 +69,7 @@ export default function Plan(){
                     </div>
                     <div className="plan-includes-cont">
                     <Check fontSize="small" style={{color:"rgb(53, 53, 155)"}}/>
-                    <p>Jisti Jaas intergration</p>
+                    <p>Interactive Live Class</p>
                     </div>
                   
                     <div className="plan-includes-cont">
@@ -86,7 +86,7 @@ export default function Plan(){
                     </div>
 
                 </div>
-                <button className="select-plan-btn">$235/month</button>
+                <button className="select-plan-btn">Talk to sales</button>
                
                 </div>
             </div>
@@ -104,16 +104,13 @@ export default function Plan(){
                     </div>
                     <div className="plan-includes-cont">
                     <Check fontSize="small" style={{color:"rgb(53, 53, 155)"}}/>
-                    <p>Google Apps intergrations</p>
+                    <p>Apps intergrations</p>
                     </div>
                     <div className="plan-includes-cont">
                     <Check fontSize="small" style={{color:"rgb(53, 53, 155)"}}/>
-                    <p>Jisti Jaas intergration</p>
+                    <p>Interactive live classes</p>
                     </div>
-                    <div className="plan-includes-cont">
-                    <Check fontSize="small" style={{color:"rgb(53, 53, 155)"}}/>
-                    <p>Github intergration</p>
-                    </div>
+                 
                     <div className="plan-includes-cont">
                     <Check fontSize="small" style={{color:"rgb(53, 53, 155)"}}/>
                     <p>upto 5GB workspaces storage</p>
@@ -128,7 +125,7 @@ export default function Plan(){
                     </div>
 
                 </div>
-                <button className="select-plan-btn">$525/month</button>
+                <button className="select-plan-btn">Talk to sales</button>
                
                 </div>
               

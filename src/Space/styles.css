@@ -3,18 +3,181 @@
     flex-direction: column;
     margin: 0;
     flex:1;
-    background-color:  rgb(208, 226, 235) ;
+    background-color:  rgb(232, 238, 241) ;
     height: 100vh;
     overflow: hidden;
 
 }
 .space-cont-inner{
-    margin-top: 10px;
+ 
     display: flex;
     overflow-y: scroll;
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: space-between;
     height: 100%;
+    
+
     width: 100%
+
+}
+.space-cont-messenger{
+    display: flex;
+    flex-direction: column;
+    margin-top:30px;
+}
+.space-cont-nav{
+    display: flex;
+    flex:0.20;
+    padding: 10px;
+    justify-content: space-evenly;
+    flex-direction: column;
+
+}
+.search-space-input{
+    height: 40px;
+    border-radius: 5px;
+    border: 0px;
+    background-color:white ;
+    width: 100%;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+
+
+}
+.space-cont-chat{
+   
+
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 6px 0px;
+    background-color: white;
+    height: 100%;
+    
+    border-radius: 30px;
+
+}
+.space-cont-task{
+    height: 100%;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 6px 0px;
+    background-color: white;
+    
+  
+}
+.space-cont-outer-task{
+    padding: 10px;
+    display: flex;
+ flex-direction: column;
+    
+    flex: 0.30;
+}
+.space-cont-outer-chat{
+    padding: 10px;
+    display: flex;
+ flex-direction: column;
+    
+    flex: 0.50;
+    
+}
+.space-task-details{
+    display: flex;
+    width: 95%;
+    margin: 10px;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+.space-task-nav{
+    display: flex;
+    width: 95%;
+    margin: 10px;
+    flex-direction: row;
+    justify-content: flex-end;
+   
+}
+.task-assigned,.task-timeline,.task-status{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+.task-inner-title{
+    font-size: 13px;
+    color: rgb(163, 162, 162);
+    
+    cursor: pointer;
+
+}
+.task-inner-titleselect{
+    font-size: 13px;
+    
+    font-weight: 600;
+    cursor: pointer;
+    border-bottom: 2px solid rgb(76, 76, 240);
+
+}
+.new-task-btn{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+  
+    background-color:rgb(53, 53, 155);
+    border: none;
+    width: 150px;
+    font-size: 13px;
+    font-weight: bold;
+    height: 30px;
+    color: white;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+   cursor: pointer;
+    margin-bottom: 10px;
+    border-radius: 10px;
+}
+.tasks-cont-select{
+display: flex;
+flex-direction: column;
+padding: 10px;
+
+align-items: center;
+justify-content: center;
+}
+.task-inner-navbar{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+
+}
+.new-task-title{
+    font-size: 13px;
+   
+    color: rgb(163, 162, 162);
+    font-weight: 600;
+
+}
+.hr-line{
+    width: 100%;
+    height: 1px;
+    background-color: rgb(206, 206, 206);
+}
+.space-chat-nav{
+    display: flex;
+    flex-direction: row;
+    margin: auto;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1)  ;
+height: 50px;
+
+    justify-content: flex-start;
+}
+
+
+.space-cont1>p{
+    color: rgb(13, 92, 128);
+    font-weight: 600;
+}
+.space-cont-nav{
+    
 
 }
 @media screen and (max-width:768px) {

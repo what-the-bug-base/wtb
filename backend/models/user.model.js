@@ -4,8 +4,9 @@ const Joi = require("joi");
 const passwordComplexity = require("joi-password-complexity");
 const { schema } = require("./workspaceUser.model");
 const userSchema = new mongoose.Schema({
-    firstName:{type:String,required:true},
-    lastName:{type:String,required:true},
+    firstname:{type:String,required:true},
+    lastname:{type:String,required:true},
+    regNo:{type:String,required:true},
     email:{type:String,required:true},
     password:{type: String,required:true},
     verified:{type:Boolean,default:false},
@@ -20,18 +21,24 @@ const User = mongoose.model("user",userSchema)
 
 const validate = (data)=>{
     const schemaregister = Joi.object({
-        firstName:Joi.string().require().label("Fist Name"),
-        lastName:Joi.string().require().label("Last Name"),
-        email:Joi.string.email.require().label("Email"),
-        password:passwordComplexity().require.label("Password")
+        firstname:Joi.string().required().label("firstname"),
+        lastname:Joi.string().required().label("lastname"),
+        email:Joi.string().email().required().label("email"),
+        regno:Joi.string().required().label("regno"),
+        password:passwordComplexity().required().label("password")
 
     });
     return schemaregister.validate(data)
 }
 const validateLogin = (data)=>{
     const schemalogin = Joi.object({
-        email:Joi.string().require().label("Email"),
-        password:Joi.string().min(8).require().label("Password")
+        email:Joi.string().required().label("email"),
+        password:Joi.string().min(8).required().label("password")
     });
     return schemalogin.validate(data)
 }
+
+exports.validate = validate
+
+exports.validateLogin = validateLogin
+module.exports = User;

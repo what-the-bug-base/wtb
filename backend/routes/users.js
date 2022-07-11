@@ -7,33 +7,34 @@ const sendVerificationEmail = require("./sendVerificationMail")
 const crypto = require('crypto')
 const Joi = require("joi")
 router.route('/').get((req,res)=>{
-    WorkspaceUser.find()
+    workspaceUser.find()
     .then(users=>res.json(users))
     .catch(err=>res.status(400).json('Error'+err))
 });
 
-router.route('api/v1/auth/register/').post(async(req,res)=>{
-        try{
-            const{ error } = validate(req.body);
-            if(error) return res.status(400).send({message:error.details[0].message});
-            const user = await User.findOne({email:req.body.email});
-            if(user){
-            return res.status(409).send({message:"User with given email already exists"})
-            }
-        else{
-            const salt = await bcrypt.genSalt(Number(process.env.SALT));
-            const hashPassword = await bcrypt.hash(req.body.password,salt);
+router.route('/api/v1/auth/register').post(async(req,res)=>{
+      
+    try{
+        console.log(req.body.data)
+        const{ error } = validate(req.body.data);
+        if(error) return res.status(400).send({message:error.details[0].message});
 
-            await new User({...req.body,password:hashPassword}).save();
-            res.status(201).send({message:"User Created successfully"});}
+        const user = await User.findOne({email:req.body.email});
+        if (user)return res.status(409).send({message:"User with given email already exists"})        
+        const salt = await bcrypt.genSalt(Number(process.env.SALT));
+        const hashPassword = await bcrypt.hash(req.body.password,salt);
+
+        await new User({...req.body,password:hashPassword}).save();
+        res.status(201).send({message:"User Created successfully"});
 
     }catch(error){
+        console.log(error)
    res.status(500).send({message:"Internal Server Error"})
            
     }
 })
 
-router.route('api/v1/auth/login').post(async(req,res)=>{
+router.route('/api/v1/auth/login').post(async(req,res)=>{
 
     try{
         const {error} =validateLogin(req.body);
@@ -53,7 +54,7 @@ router.route('api/v1/auth/login').post(async(req,res)=>{
         res.status(500).send({message:"Internal Server Error"})
     }
 })
-router.route('api/v1/users/add').post((req,res)=>{
+router.route('/api/v1/users/add').post((req,res)=>{
     const userName = req.body.userName;
     const userId = req.body.userId;
     const userRole =req.body.userRole;
@@ -64,17 +65,17 @@ router.route('api/v1/users/add').post((req,res)=>{
 
 });
 
-router.route('api/v1/users/:id').get((req,res)=>{
+router.route('/api/v1/users/:id').get((req,res)=>{
     User.findById(req.params.id)
     .then(user=>res.json(user))
     .catch(err=>res.status(400).json('Error:'+err));
 });
-router.route('api/v1/findUser/:id').get((req,res)=>{
+router.route('/api/v1/findUser/:id').get((req,res)=>{
     workspaceUser.findByIdAndDelete(req.params.id)
     .then(user=>res.json("User Deleted"))
     .catch(err=>res.status(400).json('Error:'+err));
 });
-router.route('api/v1/users/update/:id').get((req,res)=>{
+router.route('/api/v1/users/update/:id').get((req,res)=>{
     User.findById(req.params.id)
     .then(user=>{
         user.name = req.body.userName,
