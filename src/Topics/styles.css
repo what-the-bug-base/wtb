@@ -7,11 +7,56 @@
     
 }
 .topics-cont-inner{
-    margin: auto;
+   
     display: flex;
     height: 100%;
     width: 20px;
     overflow-y: scroll;
     justify-content: center;
     align-items: center;
+}
+.apps-cont{
+    width: 95%;
+    height: auto;
+    padding: 20px;
+
+
+
+}
+.app-cont{
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+
+    display: flex;
+    flex-direction: row;
+    width: 200px;
+    height: 100px;
+    background-color: white;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+  
+
+}
+.app-inner-cont{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction:column;
+
+}
+.add-rmv-btn{
+    margin-top: 10px;
+    margin-bottom: 20px;
+    cursor: pointer;
+    font-weight: 500;
+    width:90px;
+    color:black;
+    height:32px;
+    border: 0;
+
+
+}
+.description-cont{
+    font-size: 15px;
+    font-family: monospace;
 }

@@ -128,6 +128,9 @@ display:none;
 }
 
 @media screen and (min-width: 768px){
+  .bg-image{
+    box-shadow:rgba(0, 0, 0, 0.1) -4px 9px 25px -6px; 
+    }
 .login-cont{
 
  margin: auto;
@@ -159,25 +162,35 @@ margin-bottom: 20px;
 .login-container{
 display:flex;
 flex-direction: grid;
+height: 100%;
+max-height: auto;
 width: 100%;
 max-height:auto;
 overflow:hidden;
 
 
+bottom: 0;
+
+
 }
+.login-img1-cont{
+  max-width: 500px;
+  height: 100vh;
+}
+
 .login-cont-cont{
 display: flex;
 flex-direction: column;
-}
 
-.bg-image{
-max-width: 450px;
+min-width: 400px;
 margin-left:auto;
 height:auto;
+margin-bottom: 0;
+margin-top: 0;
+margin-left: 0;
 flex:1;
 
-bottom: 0px;
-top: 0px;
+
 
 
 }

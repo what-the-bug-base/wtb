@@ -3,11 +3,34 @@
     margin: auto;
     flex-direction: column;
     height: 100vh;
+   justify-content: center;
+   align-items: center;
+    overflow: hidden;
+   
 }
 .page-404-cont-inner{
     display: flex;
     flex-direction: column;
-    margin: auto;
+ 
+   background-color: white;
+    width: 450px;
+    border-radius: 10px;
+    opacity: 2;
+  
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px;
+
+    
+}
+.title2-404{
+    margin-left: 5px;
+}
+
+
+.title-404{
+    color: rgb(78, 78, 218);
+    margin-left: 5px;
+    font-size: 30px;
+    font-weight: bold;
 }
 .img404{
     width: 70px;

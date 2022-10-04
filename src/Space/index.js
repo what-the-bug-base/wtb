@@ -4,7 +4,7 @@ import Spaceitem from "../Spaceitem"
 import ContentHeader from "../ContentHeader"
 import { AddOutlined, MoreVert } from "@mui/icons-material"
 
-export default function Space(){
+export default function Space(setNotifications,notifications){
 
  const spaces =[{id:0,img:"pic.jpg",name:"space1",timestamp:"12:44"},
  {id:0,img:"pic.jpg",name:"space1",timestamp:"12:44"},
@@ -19,7 +19,7 @@ export default function Space(){
  })
 return(
     <div className="space-cont-outer">
-        <ContentHeader/>
+        <ContentHeader setNotifications={setNotifications}/>
         <div className="space-cont-inner">
                 <div className="space-cont-nav">
                         <div className="space-cont1">

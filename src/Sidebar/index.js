@@ -16,47 +16,19 @@ export default function Sidebar({analytics,setAnalytics,setSlide,classRoom,setCl
     return(
         <div className={`sidebar`+slided}>
             <div className="sidebar__top">
-            
-                <h3 className={`name`+slided}>EinsBoard</h3>
+           
                 <div className="menu-icon" >
-                {slide&&
-                <MenuOutlined fontSize="small" onClick={()=>{setSlide(false)}}/>}
+                {slide?
+                <MenuOutlined fontSize="small" onClick={()=>{setSlide(false)}}/>:   <CloseOutlined className={`NAME`+slided} onClick={()=>{setSlide(true)}}></CloseOutlined>
+            }
             </div>
             </div>
             <div className="sidebar_content">
-                <div className="sidebar_contentHeader">
-                   
-                    {lower ?
-                     <div className="sidebar_header">
-                     <ExpandLess className="expand-icon" onClick={()=>{
-                            setActive(false)
-                        }}/> 
-                        <h4 className={`text`+slided} onClick={()=>{
-                            setActive(false)}}>Workspace</h4> </div>:
-                             <div className="sidebar_header">
-                        <ExpandMore className="expand-icon" onClick={()=>{
-                            setActive(true)
-                        }}/>
-                         <h4 className={`text`+slided} onClick={()=>{
-                            setActive(true)}}>Workspace</h4>
-                             </div>}
-                        
-                   
-                    <Tooltip title="Add Markdown">
-                    <Add className="sidebar_add"></Add>
-                    </Tooltip>
-                </div>
                 <div className={`sidebar_contentList`+lower}>
                 <SideBarContent analytics={analytics} setAnalytics={setAnalytics} slide={slide} classRoom={classRoom} setClass={setClass} active={active} ide={ide} setIDE={setIDE} topics={topics} setTopics={setTopics} space={space} setSpace={setSpace} extra={extra} setExtra={setExtra}/>
                
             </div>
-            </div>
-            <div className="sidebar_info">
-        <Logout/>
-                
-
-
-            </div>
+            </div> 
         </div>
     )
 }

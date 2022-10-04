@@ -33,8 +33,10 @@ ReactDOM.render(
     <Route path='/portal/ws/:id' element={<Dashboard />}/>
     <Route path='/login' element={<Login />}/>
     <Route path="/order" element={<Plan/>}/>
-    <Route path="/portal/new" element={<NewUser/>}/>
+    <Route path="/portal/:id/new" element={<NewUser/>}/>
     <Route path='/sign-up' element={<Signup/>} />
+    <Route path='/*' element={<Page404/>} />
+
       </Routes>
   </BrowserRouter>
   </Provider>

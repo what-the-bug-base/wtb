@@ -24,8 +24,7 @@ export default function Dashboard(){
     const [classRoom,setClass] = useState(false)
     const [analytics,setAnalytics] = useState(false)
     const user1 = localStorage.getItem("token") 
- 
-
+    const [notifications,setNotifications] = useState(false)
     useEffect(() => {
         auth.onAuthStateChanged((authUser)=>{
             if(authUser){
@@ -49,12 +48,12 @@ export default function Dashboard(){
         
         <Sidebar slide={slide} analytics={analytics} setAnalytics={setAnalytics} setSlide={setSlide} classRoom={classRoom} setClass={setClass} ide={ide} setIDE={setIDE} topics={topics} setTopics={setTopics} space={space} setSpace={setSpace} extra={extra} setExtra={setExtra}/>
         
-        {!analytics&&!ide&&!topics&&!extra&&!space&&!classRoom&&<Content setSlide={setSlide}/>}
-        {!analytics&&!ide&&!topics&&extra&&!space&&!classRoom&&<Extra/>}
-        {!analytics&&ide&&!topics&&!extra&&!space&&!classRoom&&<IDE/>}
-        {!analytics&&!ide&&!topics&&!extra&&space&&!classRoom&&<Space/>}
-        {!analytics&&!ide&&topics&&!extra&&!space&&!classRoom&&<Topics/>}
-        {analytics&&!ide&&!topics&&!extra&&!space&&!classRoom&&<Analytics/>}
+        {!analytics&&!ide&&!topics&&!extra&&!space&&!classRoom&&<Content notifications={notifications} setNotifications={setNotifications} setSlide={setSlide}/>}
+        {!analytics&&!ide&&!topics&&extra&&!space&&!classRoom&&<Extra notifications={notifications} setNotifications={setNotifications}/>}
+        {!analytics&&ide&&!topics&&!extra&&!space&&!classRoom&&<IDE notifications={notifications} setNotifications={setNotifications}/>}
+        {!analytics&&!ide&&!topics&&!extra&&space&&!classRoom&&<Space notifications={notifications} setNotifications={setNotifications}/>}
+        {!analytics&&!ide&&topics&&!extra&&!space&&!classRoom&&<Topics notifications={notifications} setNotifications={setNotifications}/>}
+        {analytics&&!ide&&!topics&&!extra&&!space&&!classRoom&&<Analytics notifications={notifications} setNotifications={setNotifications}/>}
         
 
 

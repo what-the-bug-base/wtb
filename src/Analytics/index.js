@@ -28,7 +28,33 @@ export default function Analytics(){
                     '#003350',
                     '#35014F'
                 ],
-                data:[65,59,80,81,56]
+                data:[0,0,0,0]
+            }
+
+        ]
+    }
+    const months={
+        labels:[
+            'Jan','Feb','March','April','May','June','July','Aug','Sep','Oct','Nov','Dec'
+        ],
+        datasets:[
+            {
+                label:'Analytics',
+                backgroundColor:[
+                    '#B21F00',
+                    '#C9D300',
+                    '#2FDE00',
+                    '#00A6B4',
+                    '#6800B4'
+                ],
+                hoverBackgroundColor:[
+                    '#501800',
+                    '#4b5000',
+                    '#175000',
+                    '#003350',
+                    '#35014F'
+                ],
+                data:[0,0,0,0]
             }
 
         ]
@@ -82,24 +108,30 @@ export default function Analytics(){
                         <div className="class-attendance-nav">
                         <p className="class-attendance-graph-title">Attendance Analysis</p>
                         <select className="class-activity-timespan">
-                            <option>Jun 20 - Aug 20 </option>
-                            <option>last 24hr</option>
+                        <option>Filter</option>
+                            <option>Yearly</option>
+                            <option>Monthly</option>
+                            <option>Daily</option>
                         </select>
                         
                         </div>
                         <div className="bar-cont">
+
+                        <div className="bar-cont2">
                         <Bar
-          data={state}
+          data={months}
           options={{
             title:{
               display:true,
-              text:'Average Rainfall per month',
+              text:'Attendance Graphed',
               fontSize:13
             },
             legend:{
               display:true,
-              position:'right'
+              position:'center'
             }}}/>
+
+</div>
 </div>
                     </div>
                     <div className="class-activity-report">
@@ -113,11 +145,15 @@ export default function Analytics(){
                         </div>
                         
                         <div className="class-activity-nav2">
-                            <p>Student</p>
+                            <p>Name</p>
+                            <p>Role</p>
                             <p>Attendance</p>
-                            <p>Adm no</p>
                             <p>Last Active</p>
                             <p>Activity</p>
+
+                        </div>
+                        <div className="class-activity-content">
+                            <p><i>No Data Available</i></p>
 
                         </div>
                         </div>

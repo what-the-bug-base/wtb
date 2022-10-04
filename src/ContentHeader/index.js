@@ -9,7 +9,7 @@ import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import Box from '@mui/material/Box';
 import Tooltip from '@mui/material/Tooltip';
-export default function ContentHeader(){
+export default function ContentHeader(setNotifications){
     
 
    

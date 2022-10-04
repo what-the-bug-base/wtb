@@ -43,8 +43,8 @@ export default function Signup(){
 return(
     <div>
                  <div className="talk-nav">
-                <li className="temp-list">
-                <ul><img className="talk-icon"src="/icon-dev.png"/></ul> 
+                <li className="plan-cont-img">
+                <ul><img src="/icon-dev.png"/></ul> 
                  
                  
               
@@ -53,7 +53,7 @@ return(
          </div>
                            {loader==true?<div className="login-image-cont">
     <img src="/dev-icon.gif"/></div>:
-    <>
+       <div classname="login-cont-1">
          <div className="login-container">
     <Grid className="login-cont">
        
@@ -91,10 +91,11 @@ return(
        
         
     </Grid>
-    <img alt="login-img" className="bg-image"src="/assets/rename.jpg" />
-  
+    <div className="login-img1-cont">
+
+  </div>
 </div>
- </>
+ </div>
 }
 </div>
 

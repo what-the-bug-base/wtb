@@ -5,8 +5,12 @@ import { VideoCall,QuestionAnswer, AccountCircle,AccountTree, BookmarkAdd } from
 import { Tooltip } from "@mui/material"
 import GaugeChart from "react-gauge-chart";
 import toast from "react-hot-toast"
+import Notifications from "../Notifications"
+import  Calendar from "react-calendar"
+import 'react-calendar/dist/Calendar.css'
 
-export default function Content({setSlide}){
+export default function Content({setSlide,notifications,setNotifications}){
+    const [value,onChange] = React.useState(new Date())
     /**<div onClick={()=>{
                     setSlide(true)}} className="join-mtng">
 
@@ -19,11 +23,13 @@ export default function Content({setSlide}){
                     <p>ask question</p></div> */
     return(
         <div className="content">
-             <ContentHeader/>
+             <ContentHeader setNotifications={setNotifications}/>
+             {notifications && <Notifications/>}
+
              <div className="content-btns">
     <div className="tasks-completed">
         <div className="canva-graph-report">
-            
+            <Calendar onChange={onChange} valaue={value}/>
         </div>
     </div>
 
@@ -86,7 +92,7 @@ export default function Content({setSlide}){
                 </div>
                 <div className="rsvp-btn">
                     <button className="reminder-btn">
-                        RSVP
+                     START
                     </button>
                 </div>
                 </div>

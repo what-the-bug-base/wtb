@@ -53,10 +53,10 @@ export default function SideBarContent({slide,ide,analytics,setAnalytics,classRo
                 setIDE(false)
                 }}>
                  <div className={`side-icons`+slided}>
-                 <Tooltip title="Topics Outline">
+                 <Tooltip title="Apps">
                     <BookOnlineOutlined fontSize={size}/>
                     </Tooltip>
-                    <p  className={`text2`+slided}>Topics</p>
+                    <p  className={`text2`+slided}>Apps</p>
                     </div></span></h4>
                     
             <h4><span className={`sidebarcontent_hash`+selectextra} onClick={()=>{
@@ -74,19 +74,7 @@ export default function SideBarContent({slide,ide,analytics,setAnalytics,classRo
                 </Tooltip>
                     <p className={`text2`+slided}>Resources</p>
                     </div></span></h4>
-            <h4><span className={`sidebarcontent_hash`+selectide} onClick={()=>{setIDE(true)
-            setTopics(false)
-            setExtra(false)
-            setAnalytics(false)
-
-            setClass(false)
-            setSpace(false)}}>
-             <div className={`side-icons`+slided}>
-                <Tooltip title="IDE">
-                <CodeOutlined fontSize={size}/>
-                </Tooltip>
-                <p   className={`text2`+slided}>Playground</p>
-                </div></span></h4>
+  
             <h4><span className={`sidebarcontent_hash`+selectspace} onClick={()=>{setSpace(true)
             setTopics(false)
             setIDE(false)
