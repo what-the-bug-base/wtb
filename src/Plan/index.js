@@ -121,7 +121,7 @@ export default function Plan(){
                     </div>
                     <div className="plan-includes-cont">
                     <Check fontSize="small" style={{color:"rgb(53, 53, 155)"}}/>
-                    <p>Student Report,Assesment and Logs</p>
+                    <p>Student Report,Assesment and Logs Dashboard</p>
                     </div>
 
                 </div>

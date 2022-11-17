@@ -2,9 +2,10 @@ import React,{useState}from "react"
 import "./styles.css"
 import Spaceitem from "../Spaceitem"
 import ContentHeader from "../ContentHeader"
-import { AddOutlined, MoreVert } from "@mui/icons-material"
+import { AddOutlined, MoreVert, Send } from "@mui/icons-material"
+import Sidebarprofile from "../Sidebarprofile"
 
-export default function Space(setNotifications,notifications){
+export default function Space(setNotifications,notifications, sidebarprofile,setSidebarprofile){
 
  const spaces =[{id:0,img:"pic.jpg",name:"space1",timestamp:"12:44"},
  {id:0,img:"pic.jpg",name:"space1",timestamp:"12:44"},
@@ -19,7 +20,10 @@ export default function Space(setNotifications,notifications){
  })
 return(
     <div className="space-cont-outer">
-        <ContentHeader setNotifications={setNotifications}/>
+        <div style={{backgroundColor:'rgb(122, 122, 243)',position:'absolute',bottom:"0px",height:"10px",left:'0px',width:"100%"}}></div>
+
+        <ContentHeader  sidebarprofile={sidebarprofile} setSidebarprofile={setSidebarprofile} setNotifications={setNotifications}/>
+        {sidebarprofile && <Sidebarprofile setSidebarprofile={setSidebarprofile}></Sidebarprofile> }           
         <div className="space-cont-inner">
                 <div className="space-cont-nav">
                         <div className="space-cont1">
@@ -27,7 +31,7 @@ return(
                         </div>
                         <input className="search-space-input" type="text" placeholder="Search here.."></input>
                         <div className="space-cont-messenger">
-{data}
+
 </div>
                 </div>
                 <div className="space-cont-outer-chat">
@@ -36,6 +40,14 @@ return(
         <div className="space-chat-nav">
                
 
+        </div>
+        <div className="space-chat-msg-cont">
+               
+
+               </div>
+        <div className="space-chat-bar">
+                <input placeholder="Type your message" type="text" disabled></input>
+                <Send style={{color:'rgb(122, 122, 243)',marginRight:"10px"}}></Send>
         </div>
         </div>
 
@@ -46,7 +58,7 @@ return(
                <MoreVert style={{color:"rgb(102, 102, 102)"}}/>
                 </div>
                 <div className="space-task-details">
-                        <p>Define & Hypothesize</p>
+                        <p>--</p>
                         <div className="task-assigned">
                                 <p className="new-task-title">Assigned</p>
 

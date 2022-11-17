@@ -2,7 +2,7 @@
 import React from "react";
 import "./style.css"
 import Tooltip from '@mui/material/Tooltip';
-import { BrowserUpdatedOutlined,Analytics,VideoCall,MessageOutlined,CodeOutlined,HomeOutlined,BookOnlineOutlined } from "@mui/icons-material";
+import { BrowserUpdatedOutlined,Analytics,Videocam,Chair,VideoCall,MessageOutlined,CodeOutlined,HomeOutlined,BookOnlineOutlined } from "@mui/icons-material";
 export default function SideBarContent({slide,ide,analytics,setAnalytics,classRoom,setClass,setIDE,space,setSpace,extra,setExtra,topics,setTopics}){
     const selectide = ide ? "color":""
     const selectspace = space ? "color":""
@@ -38,7 +38,7 @@ export default function SideBarContent({slide,ide,analytics,setAnalytics,classRo
             }}>
              <div className={`side-icons`+slided}>
                 <Tooltip title="Class">
-            <VideoCall fontSize={size}/>
+            <Videocam fontSize={size}/>
             </Tooltip>
                 <p   className={`text2`+slided}>Class</p>
                 </div></span></h4>
@@ -59,21 +59,7 @@ export default function SideBarContent({slide,ide,analytics,setAnalytics,classRo
                     <p  className={`text2`+slided}>Apps</p>
                     </div></span></h4>
                     
-            <h4><span className={`sidebarcontent_hash`+selectextra} onClick={()=>{
-                setExtra(true)
-                setTopics(false)
-                setIDE(false)
-                setClass(false)
-                setAnalytics(false)
-
-                setSpace(false)
-                }}>
-                 <div className={`side-icons`+slided}>
-                    <Tooltip title="Extra Resources">
-                <BrowserUpdatedOutlined fontSize={size}/>
-                </Tooltip>
-                    <p className={`text2`+slided}>Resources</p>
-                    </div></span></h4>
+           
   
             <h4><span className={`sidebarcontent_hash`+selectspace} onClick={()=>{setSpace(true)
             setTopics(false)

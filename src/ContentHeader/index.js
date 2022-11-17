@@ -9,7 +9,7 @@ import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import Box from '@mui/material/Box';
 import Tooltip from '@mui/material/Tooltip';
-export default function ContentHeader(setNotifications){
+export default function ContentHeader({setNotifications, sidebarprofile,setSidebarprofile}){
     
 
    
@@ -31,22 +31,18 @@ export default function ContentHeader(setNotifications){
             
             </div>
             <div className="content_headerright">
-            <div className="sidebar_profile">
+            <div onClick={()=>{
+                setSidebarprofile(true)
+                }}  className="sidebar_profile">
             <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Profile Settings">
-                    <Avatar src={user.photo} />
+                    <Avatar  src={user.photo} />
 </Tooltip>
 </Box>
                     <div className="sidebar_profileicons">
                     
-            <Tooltip title="Notifications">
-                       <NotificationsNoneIcon className="dash-icon"/>
-                      </Tooltip>
-                     
-          <Tooltip title="More">
-                       <MoreVertIcon  className="dash-icon"/>
-                   
-                    </Tooltip>
+            
+         
                     
             
                     </div>

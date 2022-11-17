@@ -3,11 +3,13 @@ import "./styles.css"
 import {Grid ,Paper,Avatar,TextField,Button, Typography} from "@material-ui/core"
 import { Link, useNavigate } from "react-router-dom";
 import IconButton from "@material-ui/core/IconButton";
-import { auth, logInWithEmailAndPassword, signInWithGoogle } from "../firebase";
+import { auth, signInWithGoogle } from "../firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import {useSelector,useDispatch} from "react-redux"
 import {selectUser,login,logout} from "../features/userSlice"
 import Menuicon from "../Menuicon"
+import axios from "axios";
+import toast from "react-hot-toast";
 
 export default function Login(){
     const [email, setEmail] = useState("");
@@ -15,6 +17,55 @@ export default function Login(){
     const [loader,setLoader] = useState(false);
   
     const dispatch = useDispatch();
+    
+  const logInWithEmailAndPassword = async (email, password) => {
+    const data ={
+      "email":email,
+           "password" :password   
+    }
+  try{
+   const url = "http://localhost:5000/users/api/v1/auth/login"
+  const {data:res} = await axios.post(url,data);
+
+    localStorage.setItem("token",res.data);
+    toast.success("Login Successful")
+}
+  catch(error){
+
+   if(error.response && error.response.status>=400&& error.response.status<=500)
+   {
+   toast.error(error.response.data.message)
+   }else{
+    toast.error("Internal Server Error")
+   }
+  }
+ /** try {
+   const res = await signInWithEmailAndPassword(auth, email, password);
+   const user = res.user
+  //remember to change this on production
+    toast.success("Login Successful")
+          if(user){
+      window.location="/portal/new"
+    }
+  } catch (error) {
+        var errorCode = error.code;
+    var errorMessage = error.message;
+
+      if (errorCode === 'auth/user-not-found') {
+        toast.error("No user is associated with details")
+      } else if (errorCode === 'auth/wrong-password') {
+         toast.error("Wrong user-email or password")
+      }else if (errorCode === 'auth/invalid-email') {
+         toast.error("Invalid Email")
+      }
+
+
+ 
+    
+  }**/
+  
+};
+
 
    
 
@@ -40,15 +91,7 @@ return(
           
 
    
-                 <div className="talk-nav">
-                <li className="plan-cont-img">
-                <ul><img src="/icon-dev.png"/></ul> 
-                 
-                 
-                 
-               
-                </li>
-         </div>
+                
                      {loader==true?<div className="login-image-cont">
     <img src="/dev-icon.gif"/></div>:
     <div classname="login-cont-1">
@@ -67,7 +110,7 @@ return(
   
       
   <div className="login-input-bar">
-        <input  label="RegNo" onChange={(e) => setEmail(e.target.value)} value={email} placeholder="admissionNo@school/TeachersNo@School" fullWidth required/>
+        <input  label="Email" onChange={(e) => setEmail(e.target.value)} value={email} placeholder="Enter Email" fullWidth required/>
         <input  label="Password" onChange={(e) => setPassword(e.target.value)} value={password} placeholder="Enter Password" type="password" fullWidth required/>
      </div>
         <Button style={btnStyle}  onClick={() => {

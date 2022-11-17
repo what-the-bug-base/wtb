@@ -1,26 +1,26 @@
 const router = require('express').Router();
-let workspaceUser = require('../models/workspaceUser.model')
+
 let {User,validate,validateLogin} = require('../models/user.model')
 let bcrypt = require('bcrypt')
+const Class = require('../models/class.model')
+let authtoken  = require('../middleware/authenticateToken');
 const Token = require("../models/NewUserToken")
 const sendVerificationEmail = require("./sendVerificationMail")
 const crypto = require('crypto')
 const Joi = require("joi")
-router.route('/').get((req,res)=>{
-    workspaceUser.find()
-    .then(users=>res.json(users))
-    .catch(err=>res.status(400).json('Error'+err))
-});
+
+
+
 
 router.route('/api/v1/auth/register').post(async(req,res)=>{
       
     try{
-        console.log(req.body.data)
-        const{ error } = validate(req.body.data);
+        
+        const{ error } = validate(req.body);
         if(error) return res.status(400).send({message:error.details[0].message});
 
         const user = await User.findOne({email:req.body.email});
-        if (user)return res.status(409).send({message:"User with given email already exists"})        
+        if (user) return res.status(409).send({message:"User with given email already exists"})        
         const salt = await bcrypt.genSalt(Number(process.env.SALT));
         const hashPassword = await bcrypt.hash(req.body.password,salt);
 
@@ -29,17 +29,51 @@ router.route('/api/v1/auth/register').post(async(req,res)=>{
 
     }catch(error){
         console.log(error)
-   res.status(500).send({message:"Internal Server Error"})
+        res.status(500).send({message:"Internal Server Error"})
            
     }
 })
 
+router.post('/api/v1/class/schedule',authtoken,async(req,res)=>{
+
+    try{
+            const {accounttype} = await User.findById(req.user._id)
+            if(accountype=="Teacher"){
+                const classdets = await Class.findOne({email:req.body.className});
+                if (classdets) return res.status(409).send({message:"Class with that name already scheduled"})
+
+                await new Class({...req.body,}).save();
+                res.status(201).send({message:"Class Created successfully"});
+
+            }
+           
+    }
+    catch(err){
+        console.log(error)
+        res.status(500).send({message:"Internal Server Error"})
+
+    }
+
+})
+
+router.get('/api/v1/auth/userdetails',authtoken,async(req,res)=>{
+try{
+    const {firstname,lastname,email,accounttype,verified} = await User.findById(req.user._id)
+   
+    res.status(201).send({firstname:firstname,lastname:lastname,email,accounttype:accounttype,verified:verified})
+}
+catch(err)
+{
+   res.status(500).send({message:"Internal Server Error"})
+}      
+})
 router.route('/api/v1/auth/login').post(async(req,res)=>{
 
     try{
+        console.log(req.body)
         const {error} =validateLogin(req.body);
         if(error) return res.status(400).send({message:error.details[0].message});
-        const user = await User.find0ne({ email: req.body.email });
+        const user = await User.findOne({ email: req.body.email })
         if(!user)
             return res.status(401).send({message:"Invalid Email or Password"});
         const validPassword = await bcrypt.compare(
@@ -49,11 +83,14 @@ router.route('/api/v1/auth/login').post(async(req,res)=>{
             return res.status(400).send({message:"Invalid Email or Password"})
         }
         const token = user.generateAuthToken();
+
         res.status(200).send({data:token,message:"Logged in successfully"})
     }catch(err){
+        console.log(err)
         res.status(500).send({message:"Internal Server Error"})
     }
 })
+/*
 router.route('/api/v1/users/add').post((req,res)=>{
     const userName = req.body.userName;
     const userId = req.body.userId;
@@ -85,5 +122,5 @@ router.route('/api/v1/users/update/:id').get((req,res)=>{
         .then((err => res.status(400).json('Error:'+err)));
     })
     .catch(err=>res.status(400).json('Error:'+err));
-});
+});*/
 module.exports =router;

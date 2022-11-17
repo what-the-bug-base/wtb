@@ -2,29 +2,31 @@ const mongoose = require("mongoose");
 const jwt = require('jsonwebtoken');
 const Joi = require("joi");
 const passwordComplexity = require("joi-password-complexity");
-const { schema } = require("./workspaceUser.model");
+
 const userSchema = new mongoose.Schema({
     firstname:{type:String,required:true},
     lastname:{type:String,required:true},
-    regNo:{type:String,required:true},
     email:{type:String,required:true},
     password:{type: String,required:true},
+    accounttype:{type:String,required:true},
     verified:{type:Boolean,default:false},
-    
-    
-});
+    profilepicUrl:{type:String,required:false}
+    });
+
+//We'll use cluodinary CDN for storing imageurl
 userSchema.methods.generateAuthToken = function(){
- const token = jwt.sign({_id:this._id},process.env.PRIVATEKEY,{expiresIn:"1d"})
+ const token = jwt.sign({_id:this._id},process.env.PRIVATE_KEY,{expiresIn:"1d"})
  return token
 };
 const User = mongoose.model("user",userSchema)
 
 const validate = (data)=>{
+  
     const schemaregister = Joi.object({
         firstname:Joi.string().required().label("firstname"),
         lastname:Joi.string().required().label("lastname"),
         email:Joi.string().email().required().label("email"),
-        regno:Joi.string().required().label("regno"),
+        accounttype:Joi.string().required().label("accounttype"),
         password:passwordComplexity().required().label("password")
 
     });
@@ -38,7 +40,20 @@ const validateLogin = (data)=>{
     return schemalogin.validate(data)
 }
 
-exports.validate = validate
+const isAuthorized = async(req,res,next) =>{
+    try{
+        const{token} = req.data;
+        if(!token){
+            return next('Please login to access workspace')
+        }
+        const verify = await jwt.verify(token,process.env.SECRET_KEY);
+        req.user = await User.findById(verify.id);
+        next()
+    }
+    catch(error){
+        return next(error)
+    }
 
-exports.validateLogin = validateLogin
-module.exports = User;
+
+}
+module.exports = {User,validate,validateLogin,isAuthorized}

@@ -2,6 +2,7 @@
     display: flex;
     flex-direction:column;
     flex:1;
+   
     height:100vh;
     background-color:white
     
@@ -202,5 +203,54 @@ justify-content: center;
     .content-btns{
         
     };
+    .weekly-report-cont{
+
+    }
+    
+}
+.weekly-report-cont{
+    width: 30%;
+    box-shadow: rgba(10, 10, 10, 0.2) 0px 2px 8px 0px;
+    flex-direction: column;
+    display: flex;
+    padding: 10px;
+    height: auto;
+    transition: all 0.4s ease-in;
+  
+    border-radius: 10px;
+        
+}
+.pending-report-cont{
+    width: 30%;
+    box-shadow: rgba(10, 10, 10, 0.2) 0px 2px 8px 0px;
+    flex-direction: column;
+    display: flex;
+    padding: 10px;
+    height: auto;
+    transition: all 0.4s ease-in;
+  
+    border-radius: 10px;
+    
+        
+}
+.analytics-icon-cont{
+    display: flex;
+    flex-direction: row;
+   
+    align-items: center;
+
+}
+.analytics-icon-cont-ex{
+    display: flex;
+    flex-direction: row;
+    width:100%;
+    
+   justify-content:space-between;
+    align-items: center;
+
+
+}
+.analytics-icon-cont>p{
+    font-size: 12;
     
 }

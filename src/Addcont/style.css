@@ -1,0 +1,134 @@
+.add-cont-cont{
+    display: flex;
+    flex:1;
+    width: 100%;
+    height: 100vh;
+
+    position: absolute;
+  
+    top:0px;
+    bottom: 0px;
+    left: 0px;
+   
+    right: 0px;
+   
+
+}
+.classdets-input-bar{
+    display: flex;
+    margin-top: 30px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+  
+  }
+
+  .classdets-timespan{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    width: 350px;
+  }
+  .classdets-timespan-button{
+    height: 40px;
+    border-radius: 5px;
+    border: 0px;
+    width: 150px;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+  
+  
+  }
+  .class-type-timespan{
+    border: none;
+    background-color: rgb(235, 237, 238) ;
+    color: rgb(102, 102, 102);
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+  .classdets-input-bar>input{
+    height: 40px;
+    border-radius: 5px;
+    border: 0px;
+    margin-top: 30px;
+    width: 350px;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+  
+  }
+.add-cont-cont-inner{
+   
+    width: 100%;
+    height: 100vh;
+    
+    
+   
+    padding:50px;
+    background: rgba(18, 17, 17, 0.8);
+   
+    
+
+}
+.school-icon-cont{
+    display: flex;
+    animation-name: mover;
+    transition: 2s all ease;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(122, 122, 243);
+    border-radius: 50%;
+    opacity:1 !important;
+    width: 40px;
+    height: 40px;
+    
+    bottom:160px;
+    cursor:pointer;
+    right: 45px;
+    transition: all 100s ease;
+    position: absolute;
+
+}
+@keyframes mover {
+  0% {
+    bottom:100px ;
+  }
+  25%{
+    bottom: 120px;
+  }
+  50%{
+    bottom: 140px;
+  }
+  100%{
+    bottom: 160px ;
+  }
+}
+@keyframes mover2 {
+  0% {
+    bottom:102px ;
+  }
+  25%{
+    bottom: 104px;
+  }
+  50%{
+    bottom: 106px;
+  }
+  100%{
+    bottom: 110px ;
+  }
+}
+.notification-icon-cont{
+    display: flex;
+    animation-name: mover2;
+    justify-content: center;
+    align-items: center;
+    transition: 2s all ease;
+    background-color: rgb(122, 122, 243);
+    border-radius: 50%;
+    width: 40px;
+    transition: all 100s ease;
+    cursor:pointer;
+    height: 40px;
+    position: absolute; 
+    bottom: 110px;
+    right: 45px;  
+}

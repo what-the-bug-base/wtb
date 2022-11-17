@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: column;
     flex:1;
-    background-color:  rgb(232, 238, 241) ;
+    background-color:  #eee ;
     height: 100vh;
 }
 .analytics-cont-inner{
@@ -24,6 +24,7 @@ margin: auto;
 .graph-title{
     font-weight: 600;
     font-size: 13px;
+   
   
 
 }
@@ -37,12 +38,13 @@ margin: auto;
     font-weight: 400;
   
     font-size: 13px;
-    color: rgb(151, 151, 151);
+
 }
 .overview-title{
     
     font-weight: 600;
-    font-size: 20px;
+    font-size: 14px;
+    color:gray;
 
 }
 .class-report-numbers{
@@ -59,15 +61,16 @@ align-items: center;}
     display:flex;
     flex-direction: column;
     flex:0.25;
+    margin-top: 5px;
     width: 100%;
     height: 100%;
-    background-color:rgb(232, 238, 241) ;   
+    background-color:white ;   
 }
 .class-report-cont{
     display:flex;
     flex-direction: column;
     flex:0.75;
-    padding: 10px;
+    padding: 2px;
     width: 100%;
     background-color:rgb(232, 238, 241) ; 
      
@@ -87,6 +90,8 @@ align-items: center;}
 }
 .class-activity-title{
     font-weight:600;
+    color: gray;
+    font-size: 14px;
    
   
 
@@ -97,7 +102,8 @@ align-items: center;}
 }
 .class-report-cont-inner{
     margin-top: 5px;
-    border-radius: 30px;
+  
+  
     display: flex;
     flex-direction: column;
     height: 100%; 
@@ -138,8 +144,20 @@ align-items: center;}
     border-radius: 5px;
     cursor: pointer;
 }
+.subject-filter{
+    border: none;
+    background-color: rgb(175, 175, 204) ;
+    color: black ;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+   
+
+}
 .class-attendance-graph-title{
     font-weight:600;
+    font-size: 14px;
+    color: gray;
 
     margin-left: 5px;
 }

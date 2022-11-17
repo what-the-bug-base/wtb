@@ -13,6 +13,9 @@ import IDE from "../IDE"
 import Space from "../Space"
 import Topics from "../Topics"
 import Analytics from "../Analytics"
+import Class from "../Class"
+import Classrooms from "../Classrooms"
+import axios from "axios"
 export default function Dashboard(){
     const dispatch = useDispatch()
     const user = useSelector(selectUser)
@@ -23,37 +26,49 @@ export default function Dashboard(){
     const [slide,setSlide] = useState(true)
     const [classRoom,setClass] = useState(false)
     const [analytics,setAnalytics] = useState(false)
-    const user1 = localStorage.getItem("token") 
+    const token = localStorage.getItem("token")
     const [notifications,setNotifications] = useState(false)
+    const [sidebarprofile,setSidebarprofile] = useState(false)
+    const config ={
+        headers:{"x-auth-token":token}
+    }
     useEffect(() => {
-        auth.onAuthStateChanged((authUser)=>{
-            if(authUser){
-                dispatch(login({
-                    uid:authUser.uid,
-                    photo:authUser.photoURL,
-                    email:authUser.email,
-                    displayName : authUser.displayName
-                }))
+            const data = ""
+            if(token){
+                const url = "http://localhost:5000/users/api/v1/auth/userdetails"
+                axios.get(url,config).then((res)=>{
+                    dispatch(login({
+                        photo:"",
+                        email:res.data.email,
+                        firstname : res.data.firstname,
+                        lastname:res.data.lastname,
+                        accounttype:res.data.accounttype
+                    }))
+                }).catch((err)=>
+                console.log(err))
+                
+                
+              
             }
             else{
                 dispatch(logout())
                 
             }
-        })
       }, [dispatch]);
 
     return(
         <>
-   {user||user1?<div className="dash_container">
+   {user&&token?<div className="dash_container">
         
         <Sidebar slide={slide} analytics={analytics} setAnalytics={setAnalytics} setSlide={setSlide} classRoom={classRoom} setClass={setClass} ide={ide} setIDE={setIDE} topics={topics} setTopics={setTopics} space={space} setSpace={setSpace} extra={extra} setExtra={setExtra}/>
         
-        {!analytics&&!ide&&!topics&&!extra&&!space&&!classRoom&&<Content notifications={notifications} setNotifications={setNotifications} setSlide={setSlide}/>}
-        {!analytics&&!ide&&!topics&&extra&&!space&&!classRoom&&<Extra notifications={notifications} setNotifications={setNotifications}/>}
-        {!analytics&&ide&&!topics&&!extra&&!space&&!classRoom&&<IDE notifications={notifications} setNotifications={setNotifications}/>}
-        {!analytics&&!ide&&!topics&&!extra&&space&&!classRoom&&<Space notifications={notifications} setNotifications={setNotifications}/>}
-        {!analytics&&!ide&&topics&&!extra&&!space&&!classRoom&&<Topics notifications={notifications} setNotifications={setNotifications}/>}
-        {analytics&&!ide&&!topics&&!extra&&!space&&!classRoom&&<Analytics notifications={notifications} setNotifications={setNotifications}/>}
+        {!analytics&&!ide&&!topics&&!extra&&!space&&!classRoom&&<Content sidebarprofile={sidebarprofile} setSidebarprofile={setSidebarprofile} notifications={notifications} setNotifications={setNotifications} setSlide={setSlide}/>}
+        {!analytics&&!ide&&!topics&&extra&&!space&&!classRoom&&<Extra  sidebarprofile={sidebarprofile} setSidebarprofile={setSidebarprofile} notifications={notifications} setNotifications={setNotifications}/>}
+        {!analytics&&ide&&!topics&&!extra&&!space&&!classRoom&&<IDE   sidebarprofile={sidebarprofile} setSidebarprofile={setSidebarprofile} notifications={notifications} setNotifications={setNotifications}/>}
+        {!analytics&&!ide&&!topics&&!extra&&space&&!classRoom&&<Space  sidebarprofile={sidebarprofile} setSidebarprofile={setSidebarprofile} notifications={notifications} setNotifications={setNotifications}/>}
+        {!analytics&&!ide&&topics&&!extra&&!space&&!classRoom&&<Topics  sidebarprofile={sidebarprofile} setSidebarprofile={setSidebarprofile} notifications={notifications} setNotifications={setNotifications}/>}
+        {analytics&&!ide&&!topics&&!extra&&!space&&!classRoom&&<Analytics  sidebarprofile={sidebarprofile} setSidebarprofile={setSidebarprofile} notifications={notifications} setNotifications={setNotifications}/>}
+        {!analytics&&!ide&&!topics&&!extra&&!space&&classRoom&&<Classrooms  sidebarprofile={sidebarprofile} setSidebarprofile={setSidebarprofile} notifications={notifications} setNotifications={setNotifications}/>}
         
 
 

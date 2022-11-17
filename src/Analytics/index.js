@@ -4,9 +4,10 @@ import ContentHeader from "../ContentHeader"
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import 'chart.js/auto';
 import {Bar,Doughnut} from "react-chartjs-2"
+import Sidebarprofile from "../Sidebarprofile";
 
 
-export default function Analytics(){
+export default function Analytics( sidebarprofile,setSidebarprofile){
     const state={
         labels:[
             'quiz','presentations','extra'
@@ -61,12 +62,21 @@ export default function Analytics(){
     }
     return(
         <div className="analytics-cont-outer">
-            <ContentHeader/>
+            <ContentHeader  sidebarprofile={sidebarprofile} setSidebarprofile={setSidebarprofile}/>
+            {sidebarprofile==true && <Sidebarprofile setSidebarprofile={setSidebarprofile}></Sidebarprofile> }           
+            <div style={{backgroundColor:'rgb(122, 122, 243)',position:'absolute',bottom:"0px",height:"10px",left:'0px',width:"100%"}}></div>
+
             <div className="analytics-cont-inner">
 
                 <div className="class-overview-cont">
                     <div className="class-report-numbers">
+                        <div syle={{display:'flex',flexDirection:'row',flex:1,width:'"100%',justifyContent:"space-between",alignItems:'center'}}>
                     <p className="overview-title">Overview</p>
+ <select className="subject-filter">
+                        <option>Filter</option>
+                           
+                        </select>
+                        </div>
                     <div className="overview-report-cont1">
                       <p className="overview-report-title">Currently Enrolled</p>
                     </div>
@@ -118,18 +128,7 @@ export default function Analytics(){
                         <div className="bar-cont">
 
                         <div className="bar-cont2">
-                        <Bar
-          data={months}
-          options={{
-            title:{
-              display:true,
-              text:'Attendance Graphed',
-              fontSize:13
-            },
-            legend:{
-              display:true,
-              position:'center'
-            }}}/>
+                       
 
 </div>
 </div>

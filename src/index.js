@@ -12,6 +12,7 @@ import Page404 from "./Page404"
 import NewUser from "./NewUser"
 import Plan from "./Plan"
 import {Toaster} from "react-hot-toast"
+import Onboarding from './Onboarding';
 
 //  <Route path="*" element={<Page404/>}/>
 
@@ -35,6 +36,7 @@ ReactDOM.render(
     <Route path="/order" element={<Plan/>}/>
     <Route path="/portal/:id/new" element={<NewUser/>}/>
     <Route path='/sign-up' element={<Signup/>} />
+    <Route path='/onboarding' element={<Onboarding/>} />
     <Route path='/*' element={<Page404/>} />
 
       </Routes>

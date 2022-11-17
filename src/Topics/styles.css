@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: column;
     flex:1;
-    background-color:  rgb(208, 226, 235) ;
+    background-color:  white ;
     height: 100vh;
     
 }
@@ -18,22 +18,29 @@
 .apps-cont{
     width: 95%;
     height: auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    
     padding: 20px;
 
 
 
 }
 .app-cont{
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-
+   border-color:'gray';
+    border:1px solid #eee;
     display: flex;
+    box-shadow: rgba(0, 0, 0, 0.1) -4px 9px 25px -6px;
     flex-direction: row;
     width: 200px;
+    margin: 10px;
     height: 100px;
     background-color: white;
     align-items: center;
     justify-content: space-between;
     padding: 10px;
+    border-radius: 10px;
   
 
 }
@@ -50,8 +57,9 @@
     cursor: pointer;
     font-weight: 500;
     width:90px;
-    color:black;
+    color:white;
     height:32px;
+    background-color: rgb(122, 122, 243);
     border: 0;
 
 

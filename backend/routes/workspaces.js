@@ -1,6 +1,4 @@
 const router = require('express').Router();
-const{Workspaces} = require('../models/workspace.model')
-const {Invite} =require("../models/invite.model");
 const User = require('../models/user.model')
 //Lists all workspaces in Database
 router.route('/').get((req,res)=>{
@@ -10,18 +8,17 @@ router.route('/').get((req,res)=>{
 });
  
 //Adds new workspace
-router.route('api/v1/ws/add').post((req,res)=>{
+router.route('api/v1/ws/').post((req,res)=>{
    
-   const workspacename =  req.body.workspacename;
-    const workspaceId = req.body.workspaceId;
-     const newWorkspace = new Workspaces({workspacename,workspaceId});
+    const workspaceURL = req.body.workspaceId;
+     const newWorkspace = new Workspaces({workspaceUrl});
      newWorkspace.save()
      .then(()=>res.json('Workspace Created'))
      .catch(err=>res.status(400).json('Error:'+err))
 
 });
 
-//invite registered users//unregisterd users to workspace
+/*invite registered users//unregisterd users to workspace
 router.route('api/v1/ws/sendInvite/:id').post( (req,res)=>{
    const createInvite = function(invite){
        return Invite.create(invite).then(doc=>{

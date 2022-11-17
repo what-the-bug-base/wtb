@@ -64,26 +64,22 @@ const provider = new GoogleAuthProvider();
     }
   };
   const logInWithEmailAndPassword = async (email, password) => {
-    const options = {
-      method:'post',
-      headers:{
-          'Content-type':"application/json"
-      },
-      data:{
-
-             "password" :password,
-             "email":email
+   
+      const data ={
+        "email":email,
+             "password" :password
+             
            
           
       }
-  }
+  
    
     try{
-     const url = "https://localhost:5000/users/api/v1/auth/login"
-      const {data:res} = await axios.post(url,options);
+     const url = "http://localhost:5000/users/api/v1/auth/login"
+      const {data:res} = await axios.post(url,data);
       localStorage.setItem("token",res.data);
        toast.success("Login Successful")
-        window.location="/portal/new"
+       
       
       
     }
@@ -123,27 +119,23 @@ const provider = new GoogleAuthProvider();
     
   };
  
-  const registerWithEmailAndPassword = async (firstname,secondname,regNo,email,password) => {
-    const data = {firstname:firstname,secondname:secondname,regNo:regNo,email:email,password:password}
+
    
-    const options = {
-      method:'post',
-      headers:{
-          'Content-type':"application/json"
-      },
-      data:{
-        "firstname" :firstname,
+  const registerWithEmailAndPassword = async (firstname,secondname,email,password,accounttype) => {
+  
+      const data = {"firstname" :firstname,
             "lastname" : secondname,
+            "email":email,
              "password" :password,
-             "email":email,
-            "regno": regNo,
+            "accounttype": accounttype,
            
           
       }
-  }
+  
     try{
      const url = "http://localhost:5000/users/api/v1/auth/register";
-     const {data:res}  = await axios.post(url,options)
+
+     const {data:res}  = await axios.post(url,data)
      toast.success("Registration Successful")
       window.location="/"
       
@@ -197,5 +189,4 @@ const provider = new GoogleAuthProvider();
   };
 
 
-export {db, auth,provider,signInWithGoogle,logInWithEmailAndPassword,registerWithEmailAndPassword,sendPasswordReset,logout
-}
+export {db,auth,provider,signInWithGoogle,logInWithEmailAndPassword,registerWithEmailAndPassword,sendPasswordReset,logout}

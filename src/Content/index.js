@@ -1,16 +1,34 @@
-import React from "react"
+import React ,{useEffect}from "react"
 import "./style.css"
 import ContentHeader from "../ContentHeader"
-import { VideoCall,QuestionAnswer, AccountCircle,AccountTree, BookmarkAdd } from "@mui/icons-material"
+import { AnalyticsRounded,Timer,Graph,QuestionAnswer, AccountCircle,AccountTree, BookmarkAdd, Analytics, Bookmark, NotificationsActiveRounded, CloseOutlined,AddOutlined, School } from "@mui/icons-material"
 import { Tooltip } from "@mui/material"
 import GaugeChart from "react-gauge-chart";
 import toast from "react-hot-toast"
 import Notifications from "../Notifications"
 import  Calendar from "react-calendar"
+import Addcont from "../Addcont"
 import 'react-calendar/dist/Calendar.css'
+import Weeklyreport from "../Weeklyreport"
+import {selectUser,login,logout} from "../features/userSlice"
+import Reminder from "../Reminder"
+import Todayreport from "../Todayreport"
+import Sidebarprofile from "../Sidebarprofile"
 
-export default function Content({setSlide,notifications,setNotifications}){
+export default function Content({setSlide,notifications,setNotifications, sidebarprofile,setSidebarprofile}){
     const [value,onChange] = React.useState(new Date())
+    const [loader,setLoader] = React.useState(false)
+    const [calendarbtn,setCalendarbtn] = React.useState(false)
+    const [timetablebtn,setTimetablebtn] = React.useState(false)
+    const [addbtn,setAddbtn] = React.useState(true)
+    console.log(sidebarprofile)
+
+    useEffect(()=>{
+        setLoader(true)
+        setTimeout(()=>{
+            setLoader(false)
+        },100000)
+    },[])
     /**<div onClick={()=>{
                     setSlide(true)}} className="join-mtng">
 
@@ -22,84 +40,74 @@ export default function Content({setSlide,notifications,setNotifications}){
                     <QuestionAnswer></QuestionAnswer>
                     <p>ask question</p></div> */
     return(
+    
         <div className="content">
-             <ContentHeader setNotifications={setNotifications}/>
-             {notifications && <Notifications/>}
+             <ContentHeader  sidebarprofile={sidebarprofile} setSidebarprofile={setSidebarprofile} setNotifications={setNotifications}/>
+             {sidebarprofile && <Sidebarprofile setSidebarprofile={setSidebarprofile}></Sidebarprofile> }           
 
-             <div className="content-btns">
-    <div className="tasks-completed">
-        <div className="canva-graph-report">
-            <Calendar onChange={onChange} valaue={value}/>
-        </div>
-    </div>
-
-                    <div className="dash-points">
-                <div className="dash-points-overall">
-                    <p>Welcome!</p>
+             <div>
                 
-              <GaugeChart
-                id="uv-gauge-chart"
-                nrOfLevels={2}
-                arcsLength={[6 / 20, (20 - 6) / 20]}
-                colors={['rgb(13, 92, 128)', "#efefef"]}
-                percent={6 / 20}
-                arcPadding={0.02}
-                cornerRadius={0}
-                needleColor="transparent"
-                needleBaseColor="transparent"
-                hideText
-              />
-          
-            <p>6 points</p>
-                </div>
-                <div className="dash-score-factors">
-                    <p className="dash-score-title">Score factors</p>
-                    <div className="dash-score-box1">
-                    <Tooltip title="Answer questions from your moderator and earn points">
-                    <div className="dash-quiz-points">
-                        <h4>2</h4>
-                        <p>quiz point(s)</p>
-                    </div>
-                    </Tooltip>
-                    <Tooltip title="Engage with course material and earn points">
-                    <div className="dash-engage-points">
-                    <h4>4</h4>
-                   <p>engagement</p>
-                    </div>
-                    </Tooltip>
-                    </div>
-                    <div className="dash-score-box2">
-                    <div className=""></div>
-                    <div className=""></div>
-                    </div>
-                </div>
-            </div>
-             </div>
-        <div className="bottom-btns">
-             <div className="upcoming-sub">
-                <p className="title-sub">Upcoming Lesson</p>
-                <div className="upcoming-sub-inner">
-                <div className="file-cont-sub">
-                <BookmarkAdd/>
-                </div>
-                <div className="topic-cont-name">
-                <p>Intro to Networking</p>
-                </div>
+            <div style={{display:"flex",width:"95%",padding:7}}>
+                <p style={{fontSize:14,fontWeight:'600',color:"gray"}}>Overview</p>
 
-                <div className="date-cont-time">
-                <p>7:00 am</p>
-                <p>12/05/2022</p>
-                </div>
-                <div className="rsvp-btn">
-                    <button className="reminder-btn">
-                     START
-                    </button>
-                </div>
-                </div>
-             </div>
-             </div>
-          
+            </div>
+            <div style={{display:"flex",flexDirection:'row',width:"55%",justifyContent:'space-between',padding:5}}>
+            <button onClick={()=>{
+                setTimetablebtn(true)
+                setCalendarbtn(false)
+            }} style={{padding:7,borderColor:'gray',border:timetablebtn?"white":"1px solid #eee",borderRadius:15,justifyContent:'center',backgroundColor:timetablebtn?"rgb(122,122,243)":'white',alignItems:'center',alignContent:'center',width:"120px",cursor:'pointer'}}>
+            Timetable
+            </button>
+            <button onClick={()=>{
+                setCalendarbtn(true)
+                setTimetablebtn(false)
+            }}  name="Calendar" style={{padding:7,borderColor:calendarbtn?'white':'gray',border:calendarbtn?"0px solid white":"1px solid #eee",borderRadius:15,justifyContent:'center',backgroundColor:calendarbtn?'rgb(122, 122, 243)':'white',alignItems:'center',alignContent:'center',width:"120px",cursor:'pointer'}}>
+            Calendar
+            </button>
            
+            <button style={{padding:7,borderColor:'gray',border:"1px solid #eee",borderRadius:15,justifyContent:'center',backgroundColor:'white',alignItems:'center',alignContent:'center',width:"120px",cursor:'pointer'}}>
+            Classrooms
+            </button>
+             
+
+          
+            </div>
+            <div style={{display:'flex',width:'90%',justifyContent:'space-between',padding:10,flexDirection:'row'}}>
+
+         <Weeklyreport/>
+         <Reminder/>
+            <div style={{backgroundColor:'rgb(122, 122, 243)',position:'absolute',bottom:"0px",height:"10px",left:'0px',width:"100%"}}></div>
+<div style={{backgroundColor:'rgb(122, 122, 243)', boxShadow:"rgba(10, 10, 10, 0.2) 0px 2px 8px 0px",alignItems:'center',cursor:"pointer",display:'flex',justifyContent:'center',position:'absolute',bottom:"50px",borderRadius:"50%",height:"50px",right:'40px',width:"50px"}}>
+    {addbtn?<AddOutlined onClick={()=>{
+        setAddbtn(false)
+    }} style={{color:'white'}}>
+
+    </AddOutlined>:<CloseOutlined style={{color:'white'}}></CloseOutlined>}
+</div>
+
+     {!addbtn&&<Addcont addbtn={addbtn} setAddbtn={setAddbtn}></Addcont>}   
+            <div className="weekly-report-cont">
+                    <div className="analytics-icon-cont">
+                   <Bookmark style={{color:'rgb(122, 122, 243)',fontSize:19}}></Bookmark>
+
+                   <p style={{fontSize:13,fontWeight:"590",color:'rgb(122, 122, 243)'}}>Pending events</p>                             
+
+                    </div>
+
+<p style={{fontSize:13}}>There are no events</p>
+        </div>
+
+             
+             </div>
+             
+             
+        </div>
+        <div style={{display:"flex",width:"90%",flexDirection:'column',padding:10}}>
+             <div style={{display:"flex",width:"100%"}}>
+               
+             </div>
+<Todayreport/>
+             </div>
         </div>
     )
 }

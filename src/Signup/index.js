@@ -14,6 +14,7 @@ export default function Signup(){
     const [secondname, setSecondname] = useState("");
     const [loader,setLoader] = useState(false);
     const [regNo, setRegNo] = useState("");
+    const [accounttype,setAccountType] = useState("Teacher")
    
 
 
@@ -69,18 +70,26 @@ return(
     <input label="firstname" onChange={(e) => setFirstname(e.target.value)} value={firstname} placeholder="Enter First Name" fullWidth required/>
     <input label="secondname" onChange={(e) => setSecondname(e.target.value)} value={secondname} placeholder="Enter Last Name" fullWidth required/>
     </div>
-    <input label="RegNo" onChange={(e) => setRegNo(e.target.value)} value={regNo} placeholder="admissionNo@school" fullWidth required/>
-       
+  
+         
         <input  label="Email" onChange={(e) => setEmail(e.target.value)} value={email} placeholder="Enter email" fullWidth required/>
         <input  label="Password" onChange={(e) => setPassword(e.target.value)} value={password} placeholder="Enter Password" type="password" fullWidth required/>
+   
      </div>
-  
+     <div style={{marginTop:"20px"}}>
+     <p style={{fontSize:13,color:"#212222"}}>Please choose account type</p>
+            <select  defaultValue={accounttype} onChange={(e)=>{setAccountType(e.target.value)}} className="account-activity">
+                 <option value="Teacher">Teacher</option>
+                            <option value="Organisation" disabled>Organisation</option>
+                            <option value="Student">Student</option>
+                        </select>
+                        </div>
         <Button style={btnStyle}  onClick={() => {
               setLoader(!loader)
               setTimeout(()=>{
                   setLoader(loader=>!loader)},2600);
-                  
-                  registerWithEmailAndPassword(firstname,secondname,regNo,email,password) 
+                console.log(accounttype)
+                  registerWithEmailAndPassword(firstname,secondname,email,password,accounttype) 
                   setLoader(!loader)
            
         }} type="sumbit" variant="contained" color="primary" fullWidth>Sign up</Button>
