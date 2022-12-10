@@ -8,27 +8,34 @@ import toast from "react-hot-toast"
 import Notifications from "../Notifications"
 import  Calendar from "react-calendar"
 import Addcont from "../Addcont"
+import {useParams} from "react-router-dom"
 import 'react-calendar/dist/Calendar.css'
 import Weeklyreport from "../Weeklyreport"
 import {selectUser,login,logout} from "../features/userSlice"
 import Reminder from "../Reminder"
 import Todayreport from "../Todayreport"
+import axios from "axios"
+import {useSelector} from "react-redux"
 import Sidebarprofile from "../Sidebarprofile"
 
 export default function Content({setSlide,notifications,setNotifications, sidebarprofile,setSidebarprofile}){
     const [value,onChange] = React.useState(new Date())
-    const [loader,setLoader] = React.useState(false)
+  
+    const user= useSelector(selectUser)
     const [calendarbtn,setCalendarbtn] = React.useState(false)
     const [timetablebtn,setTimetablebtn] = React.useState(false)
     const [addbtn,setAddbtn] = React.useState(true)
-    console.log(sidebarprofile)
+    const [workspacedata,setWorkspacedata] =  React.useState([])
+   
+    
+    const config ={
+        headers:{"x-auth-token":localStorage.getItem('token')}
+    }
+   
 
-    useEffect(()=>{
-        setLoader(true)
-        setTimeout(()=>{
-            setLoader(false)
-        },100000)
-    },[])
+   
+
+   
     /**<div onClick={()=>{
                     setSlide(true)}} className="join-mtng">
 
@@ -42,8 +49,9 @@ export default function Content({setSlide,notifications,setNotifications, sideba
     return(
     
         <div className="content">
-             <ContentHeader  sidebarprofile={sidebarprofile} setSidebarprofile={setSidebarprofile} setNotifications={setNotifications}/>
-             {sidebarprofile && <Sidebarprofile setSidebarprofile={setSidebarprofile}></Sidebarprofile> }           
+          
+           <ContentHeader  sidebarprofile={sidebarprofile} setSidebarprofile={setSidebarprofile} setNotifications={setNotifications}/>
+             {sidebarprofile && <Sidebarprofile sidebarprofile={sidebarprofile} setSidebarprofile={setSidebarprofile}></Sidebarprofile> }           
 
              <div>
                 
@@ -108,6 +116,7 @@ export default function Content({setSlide,notifications,setNotifications, sideba
              </div>
 <Todayreport/>
              </div>
+            
         </div>
     )
 }

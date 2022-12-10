@@ -4,8 +4,10 @@ import React from "react"
 import "./styles.css"
 import {useDispatch,useSelector} from "react-redux" 
 import {selectUser,login,logout} from "../features/userSlice"
-export default function Sidebarprofile({setSidebarprofile,setSidebar}){
+export default function Sidebarprofile({setSidebarprofile,sidebarprofile}){
     const user = useSelector(selectUser)
+    const slided = sidebarprofile?"slided":""
+    
     return(
         <div className="sidebar-profile-cont">
             <div onClick={()=>{
@@ -13,11 +15,11 @@ export default function Sidebarprofile({setSidebarprofile,setSidebar}){
 
             </div>
             
-<div className="sidebar-profile-inner">
+<div className={"sidebar-profile-inner"+slided}>
    <div className="sidebar-top-dets">
    <div className="sidebar-top-dets-inner">
     <div className="sidebar-acounttype-dets">
-<p>{user.accounttype}</p>
+<p style={{fontSize:"13px"}}>{user.accounttype}</p>
     </div>
     <Avatar sizes="medium"></Avatar>
     <div className="edit-icon-cont">
@@ -30,11 +32,20 @@ export default function Sidebarprofile({setSidebarprofile,setSidebar}){
     </div>
     <div className="sidebar-profile-input-bar">
     <div className="sidebar-first-second-name">
-    <input label="firstname" placeholder={user.firstname} fullWidth disabled/>
-    <input label="lastname" placeholder={user.lastname} fullWidth disabled/>
+   
+                                    <div className={{ display: "flex", width: "200px", height: 'auto', alignItems: 'center', justifyContent: 'center', flexDirection: "column" }}>
+                    <p style={{fontSize:"13px"}}>Firstname</p>                  
+    <input className="sidebar-input-bars" label="firstname" placeholder={user.firstname} fullWidth disabled/>
     </div>
-    <input  label="Email" placeholder={user.email} fullWidth required disabled/>
-    
+    <div className={{ display: "flex", width: "200px", height: 'auto', alignItems: 'center', justifyContent: 'center', flexDirection: "column" }}>
+                    <p style={{fontSize:"13px"}}>Lastname</p>                  
+    <input  className="sidebar-input-bars" label="lastname" placeholder={user.lastname} fullWidth disabled/>
+    </div>
+    </div>
+    <div className={{ display: "flex", width: "200px", height: 'auto', alignItems: 'center', justifyContent: 'center', flexDirection: "column" }}>
+                    <p style={{fontSize:"13px"}}>Email</p>
+    <input  className="sidebar-input-bars" label="Email" placeholder={user.email} fullWidth required disabled/>
+    </div>
         
 
                                

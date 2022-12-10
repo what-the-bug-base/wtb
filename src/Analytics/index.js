@@ -62,9 +62,7 @@ export default function Analytics( sidebarprofile,setSidebarprofile){
     }
     return(
         <div className="analytics-cont-outer">
-            <ContentHeader  sidebarprofile={sidebarprofile} setSidebarprofile={setSidebarprofile}/>
-            {sidebarprofile==true && <Sidebarprofile setSidebarprofile={setSidebarprofile}></Sidebarprofile> }           
-            <div style={{backgroundColor:'rgb(122, 122, 243)',position:'absolute',bottom:"0px",height:"10px",left:'0px',width:"100%"}}></div>
+        <div style={{backgroundColor:'rgb(122, 122, 243)',position:'absolute',bottom:"0px",height:"10px",left:'0px',width:"100%"}}></div>
 
             <div className="analytics-cont-inner">
 

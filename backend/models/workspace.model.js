@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const {ObjectId} = mongoose.Schema;
 
 const workspaceSchema = new  mongoose.Schema({
     workspaceUrl:{
@@ -8,13 +9,16 @@ const workspaceSchema = new  mongoose.Schema({
     },
     class:[{
         type: mongoose.Schema.Types.ObjectId,
-        ref: "class"
+        ref: "Class"
        }],
-
-    user:[{
-              type: mongoose.Schema.Types.ObjectId,
+    event:[{
+        type: mongoose.Schema.Types.ObjectId,
+        ref:"Event"
+    }],
+     user:{
+              type: ObjectId,
               ref: "User"
-             }]},{
+             }},{
 
     timestamps:true
 

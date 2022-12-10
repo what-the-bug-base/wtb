@@ -7,7 +7,7 @@ import {io} from "socket.io-client"
 import Subjects from "../Subjects"
 import Sidebarprofile from "../Sidebarprofile";
 
-export default function Classrooms( sidebarprofile,setSidebarprofile){
+export default function Classrooms( {sidebarprofile,setSidebarprofile}){
   const socket = io("https://localhost:3000")
     const [classbtn,setClassbtn] =React.useState(false)
     const [classRoomName,setClassRoomName] = React.useState("")
@@ -39,7 +39,7 @@ console.log(sidebarprofile)
     {classbtn==false?
         <div >
         <ContentHeader  sidebarprofile={sidebarprofile} setSidebarprofile={setSidebarprofile}></ContentHeader>
-        {sidebarprofile ==true && <Sidebarprofile setSidebarprofile={setSidebarprofile}></Sidebarprofile> }           
+        {sidebarprofile ==true && <Sidebarprofile sidebarprofile={sidebarprofile} setSidebarprofile={setSidebarprofile}></Sidebarprofile> }           
         <div style={{display:"flex",width:"95%",padding:7}}>
                 <p style={{fontSize:14,fontWeight:'600',color:"gray"}}>Classrooms</p>
 

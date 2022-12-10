@@ -1,24 +1,37 @@
 const router = require('express').Router();
 const User = require('../models/user.model')
-//Lists all workspaces in Database
+const Workspace = require('../models/workspace.model');
+let authtoken  = require('../middleware/authenticateToken');
+//Lists all workspaces in Database "Admin"
 router.route('/').get((req,res)=>{
     Workspaces.find()
     .then(workspaces=>res.json(workspaces))
     .catch(err=>res.status(400).json('Error'+err))
 });
  
-//Adds new workspace
-router.route('api/v1/ws/').post((req,res)=>{
-   
-    const workspaceURL = req.body.workspaceId;
-     const newWorkspace = new Workspaces({workspaceUrl});
-     newWorkspace.save()
-     .then(()=>res.json('Workspace Created'))
-     .catch(err=>res.status(400).json('Error:'+err))
+//List everything on workspace
+router.get('/api/v1/ws/:id',authtoken,async(req,res)=>{
+   try{
+    const workspaceURL = req.params.id;
+    const workspace = await Workspace.findOne({workspaceUrl:workspaceURL})
+    if(!workspace)  return res.status(404).send({message:"Workspace does not exist"});
+    if(workspace.user.toString()!==req.user._id.toString()) return res.status(403).send({message:'Forbidden'})
+    res.status(201).send({data:workspace,message:"Workspace data sent"})
+
+
+
+
+   }catch(err){
+    res.status(500).send({message:"Internal Server Error"})
+
+   }
+
+
+
+
 
 });
 
-/*invite registered users//unregisterd users to workspace
 router.route('api/v1/ws/sendInvite/:id').post( (req,res)=>{
    const createInvite = function(invite){
        return Invite.create(invite).then(doc=>{

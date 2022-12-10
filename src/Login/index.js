@@ -25,10 +25,11 @@ export default function Login(){
     }
   try{
    const url = "http://localhost:5000/users/api/v1/auth/login"
-  const {data:res} = await axios.post(url,data);
-
-    localStorage.setItem("token",res.data);
+  const res = await axios.post(url,data);
+      localStorage.setItem("token",res.data.data);
+    
     toast.success("Login Successful")
+    window.location=`/portal/ws/${res.data.url}`
 }
   catch(error){
 

@@ -11,9 +11,11 @@ import {selectUser,login,logout} from "../features/userSlice"
 import Extra from "../Extra"
 import IDE from "../IDE"
 import Space from "../Space"
+import toast from "react-hot-toast"
 import Topics from "../Topics"
 import Analytics from "../Analytics"
 import Class from "../Class"
+import {useParams} from "react-router-dom"
 import Classrooms from "../Classrooms"
 import axios from "axios"
 export default function Dashboard(){
@@ -28,7 +30,12 @@ export default function Dashboard(){
     const [analytics,setAnalytics] = useState(false)
     const token = localStorage.getItem("token")
     const [notifications,setNotifications] = useState(false)
+    const {id} = useParams()
     const [sidebarprofile,setSidebarprofile] = useState(false)
+    const [workspacedata,setWorkspacedata] =  React.useState([])
+    const [loader,setLoader] = React.useState(true)
+    
+   
     const config ={
         headers:{"x-auth-token":token}
     }
@@ -42,10 +49,51 @@ export default function Dashboard(){
                         email:res.data.email,
                         firstname : res.data.firstname,
                         lastname:res.data.lastname,
-                        accounttype:res.data.accounttype
+                        accounttype:res.data.accounttype,
+                        workspaceURL:id
+
                     }))
                 }).catch((err)=>
                 console.log(err))
+console.log(user)
+                if(id){
+                    const url = `http://localhost:5000/workspaces/api/v1/ws/${id}`
+                    axios.get(url,config).then((res)=>{
+                       if(res.status==201){
+                        setWorkspacedata(res.data)
+                        setTimeout(()=>{
+                            setLoader(false)
+                        },10000)
+        
+                       } 
+                        else if(res.status==403){
+                            toast.error("Forbidden.You are not authorized")
+                            window.location="/"
+                            
+                        }
+                        else if(res.status==404){ 
+                            toast.error("Workspace does not exist")
+                            window.location="/"
+                          
+                    
+                        }else{
+                            toast.error("Internal Server Error")
+                          
+                        }
+        
+                    
+                    }).catch((err)=>
+                   toast.error("Internal Server Error"))
+                    
+                    
+                  
+                }
+                else{
+                      toast.error("Internal Server Error")
+                }
+                 
+                
+                
                 
                 
               
@@ -59,6 +107,8 @@ export default function Dashboard(){
     return(
         <>
    {user&&token?<div className="dash_container">
+   {loader?<div style={{display:'flex',height:"100vh", marginTop: "30px",marginBottom: "40px",maxWidth: "350px",margin:'auto',alignItems:'center',justifyContent:'center'}}><img style={{width:"50px",margin:'auto',height:"50px"}} src="/blockspinner.svg"></img></div>:
+         <>
         
         <Sidebar slide={slide} analytics={analytics} setAnalytics={setAnalytics} setSlide={setSlide} classRoom={classRoom} setClass={setClass} ide={ide} setIDE={setIDE} topics={topics} setTopics={setTopics} space={space} setSpace={setSpace} extra={extra} setExtra={setExtra}/>
         
@@ -70,7 +120,7 @@ export default function Dashboard(){
         {analytics&&!ide&&!topics&&!extra&&!space&&!classRoom&&<Analytics  sidebarprofile={sidebarprofile} setSidebarprofile={setSidebarprofile} notifications={notifications} setNotifications={setNotifications}/>}
         {!analytics&&!ide&&!topics&&!extra&&!space&&classRoom&&<Classrooms  sidebarprofile={sidebarprofile} setSidebarprofile={setSidebarprofile} notifications={notifications} setNotifications={setNotifications}/>}
         
-
+</>}
 
     </div>:<Login/>}
     </>

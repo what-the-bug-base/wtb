@@ -7,7 +7,12 @@ let authtoken  = require('../middleware/authenticateToken');
 const Token = require("../models/NewUserToken")
 const sendVerificationEmail = require("./sendVerificationMail")
 const crypto = require('crypto')
-const Joi = require("joi")
+const Joi = require("joi");
+const {v4:uuidv4} = require('uuid')
+
+
+const Workspace = require('../models/workspace.model');
+const workspaceidtag  = uuidv4()
 
 
 
@@ -24,8 +29,11 @@ router.route('/api/v1/auth/register').post(async(req,res)=>{
         const salt = await bcrypt.genSalt(Number(process.env.SALT));
         const hashPassword = await bcrypt.hash(req.body.password,salt);
 
-        await new User({...req.body,password:hashPassword}).save();
-        res.status(201).send({message:"User Created successfully"});
+       const newuser = await new User({...req.body,password:hashPassword}).save();
+
+      
+       await new Workspace({workspaceUrl:workspaceidtag,user:newuser._id.toString()}).save();
+       res.status(201).send({message:"User Created successfully"});
 
     }catch(error){
         console.log(error)
@@ -70,7 +78,7 @@ catch(err)
 router.route('/api/v1/auth/login').post(async(req,res)=>{
 
     try{
-        console.log(req.body)
+      
         const {error} =validateLogin(req.body);
         if(error) return res.status(400).send({message:error.details[0].message});
         const user = await User.findOne({ email: req.body.email })
@@ -83,8 +91,11 @@ router.route('/api/v1/auth/login').post(async(req,res)=>{
             return res.status(400).send({message:"Invalid Email or Password"})
         }
         const token = user.generateAuthToken();
+        const workspace = await Workspace.findOne({user:user._id.toString()})
+        const workspaceURL= workspace.workspaceUrl;
+        console.log(workspaceURL)
 
-        res.status(200).send({data:token,message:"Logged in successfully"})
+        res.status(200).send({data:token,url:workspaceURL,message:"Logged in successfully"})
     }catch(err){
         console.log(err)
         res.status(500).send({message:"Internal Server Error"})

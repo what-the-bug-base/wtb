@@ -41,10 +41,11 @@
 
 }
 .sidebar-profile-inner{
-    width: 30%;
-    position: fixed;
+    width: 10%;
+    position: absolute;
     height: 100vh;
     background-color: white;
+    transition: all 10s ease;
     margin-left: auto;
     right: 0;
     bottom: 0;
@@ -52,11 +53,24 @@
 
 
 }
-.sidebar-first-second-name>input{
+
+.sidebar-profile-innerslided{
+  width: 30%;
+  transition: all 10s ease;
+  position: absolute;
+  height: 100vh;
+  background-color: white;
+  margin-left: auto;
+  right: 0;
+  bottom: 0;
+  top:0;
+
+}
+.sidebar-input-bars{
     height: 25px;
     border-radius: 5px;
     border: 0px;
-    margin-top: 30px;
+   
     width: 150px;
     box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
   
@@ -66,7 +80,7 @@
   .sidebar-top-dets{
 display: flex;
 flex-direction: row;
-justify-content: center;
+justify-content: flex-end;
 align-items: center;
 margin-top:20px;
 width: 100%;
@@ -93,7 +107,7 @@ font-size: 13px;
   .sidebar-top-dets-inner{
     display: flex;
 flex-direction: row;
-justify-content: center;
+justify-content: flex-end;
 align-items: center;
 width: 200px;
 margin-left: auto;

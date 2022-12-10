@@ -1,11 +1,11 @@
 
-import { CallOutlined, Close, HeadsetRounded, MicOutlined,MicOff, MicSharp, MoreHoriz, MoreVert, RecordVoiceOver, Videocam, VideocamOff } from "@mui/icons-material"
+import { CallOutlined, Close, HeadsetRounded, MicOutlined,MicOff, MicSharp, MoreHoriz, MoreVert, RecordVoiceOver, Videocam, VideocamOff, Person } from "@mui/icons-material"
 import React, { useEffect, useRef, useState } from "react"
 import { useReducer } from "react"
 import './style.css'
 import styled, { css } from "styled-components";
 import Peer from "simple-peer";
-
+import toast from "react-hot-toast"
 
 export default function Class({classRoomName,userRole,setClassbtn,socket,me,userId}){
 
@@ -17,7 +17,7 @@ export default function Class({classRoomName,userRole,setClassbtn,socket,me,user
     const [callEnded,setCallEnded] = useState(false)
     const [name,setName] = useState("");
     const [idToCall,setIdToCall] = useState('')
-    const [loading,setLoading] = useState('false');
+    const [loader,setLoading] = useState(true);
     const [chat,setChat] = useState(true)
     const [modal,setModal] = useState(true)
     const [mute,setMute] = useState(false);
@@ -29,11 +29,14 @@ export default function Class({classRoomName,userRole,setClassbtn,socket,me,user
     const connectionRef = useRef();
 
     useEffect(()=>{
+      toast.error("Please turn on video and microphone")
         navigator.mediaDevices.getUserMedia({video:true,audio:true}).then((currentStream)=>{
             setStream(currentStream);
+            setLoading(false)
             myVideo.current.srcObject = currentStream;
 
         });
+        
         socket.on("calluser",({from,name,signal})=>{
             setRecievingCall(true);
             setCaller(from)
@@ -125,7 +128,11 @@ connectionRef.current = peer;
         }
       };
 return(
+  
     <div className="class-cont">
+          {loader?<div style={{display:'flex', marginTop: "30px", marginBottom: "40px",maxWidth: "350px",margin:'auto',alignItems:'center',justifyContent:'center'}}><img style={{width:"50px",margin:'auto',height:"50px"}} src="/spinner.gif"></img></div>:
+         
+          
 <div className="class-room-cont">
    <div className="class-board-cont">
     <div className="class-name-cont">
@@ -160,11 +167,15 @@ return(
             <p className="class-instuctor-title">Instructor</p>
         </div>
         <div className="instuctor-cont-video">
-        {stream && (
-          
-              <video style={{width:'auto',height:"220px"}} playsInline ref={myVideo} muted autoPlay />
-        
+        {stream &&(
+        <>
+       {stopVideo==true ?<div className="person-camera-off">
+        <Person></Person>
+        </div>:
+              <video style={{width:'100%',height:"220px"}} playsInline ref={myVideo} muted autoPlay />}
+        </>
           )}
+          
           {callAccepted && !callEnded && (
             <>
               <video playsInline ref={userVideo} autoPlay />
@@ -173,7 +184,7 @@ return(
 
         </div>
     </div>
-    {userRole==="instructor"&&(
+    {userRole==="Teacher"&&(
         <AnswerCall show={modal}>
             <Modal>
                 <Header>
@@ -191,7 +202,7 @@ return(
                 </Modal>
         </AnswerCall>)}
     
-    </div>
+    </div>}
     </div>
 )
 

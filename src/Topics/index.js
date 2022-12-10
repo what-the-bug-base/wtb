@@ -4,11 +4,11 @@ import {Menu} from "@mui/icons-material"
 import ContentHeader from "../ContentHeader"
 import Sidebarprofile from "../Sidebarprofile"
 
-export default function Topics( sidebarprofile,setSidebarprofile){
+export default function Topics( {sidebarprofile,setSidebarprofile}){
     return(
         <div className="topics-cont">
         <ContentHeader  sidebarprofile={sidebarprofile} setSidebarprofile={setSidebarprofile}/>
-        {sidebarprofile && <Sidebarprofile setSidebarprofile={setSidebarprofile}></Sidebarprofile> }           
+        {sidebarprofile && <Sidebarprofile sidebarprofile={sidebarprofile} setSidebarprofile={setSidebarprofile}></Sidebarprofile> }           
         <div style={{display:"flex",width:"100%",height:"45px",alignItems:'center',padding:10,justifyContent:'center'}}>
                 <input style={{width:"40%",padding:"3px",borderRadius:"15px",boxShadow:'rgba(10, 10, 10, 0.2) 0px 2px 8px 0px',border:"none",height:"40px"}} placeholder="Install 3rd Party Apps" >
 

@@ -72,7 +72,7 @@
 .school-icon-cont{
     display: flex;
     animation-name: mover;
-    transition: 2s all ease;
+    transition: all 2s ease;
     justify-content: center;
     align-items: center;
     background-color: rgb(122, 122, 243);
@@ -121,7 +121,7 @@
     animation-name: mover2;
     justify-content: center;
     align-items: center;
-    transition: 2s all ease;
+    transition: all 2s ease;
     background-color: rgb(122, 122, 243);
     border-radius: 50%;
     width: 40px;
